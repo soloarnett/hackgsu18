@@ -1,0 +1,419 @@
+@import './src/assets/styles/main';
+
+app-home{
+//     width: $full;
+//     height: $full;
+    background-color: $color-hackgsu;
+}
+a{
+    @include notSelectable();
+}
+a:active{
+    background-color: rgba($color-text-grey, 0.4);
+}
+*{
+    @include quickTransitionColors();
+}
+
+section{
+    @include display_flex;
+}
+#vetek{
+    position: absolute;
+    // top: 1rem;
+    // left: 1rem;
+    bottom: 1rem;
+    display: none !important;
+    @include desktop{
+        display: block !important;
+    }
+    // @include middle();
+}
+
+#start{
+    @include display_flex;
+
+    @include flex(10,1,0);
+    @include desktop{
+        @include flex(5,1,0);
+    }
+    
+    flex-direction: column;
+    @include desktop{
+        flex-direction: row;
+    }
+
+    .main{
+        @include display_flex;
+        @include flex(1,1,0);
+        flex-wrap: wrap;
+
+        &#info{
+            @include flexCenter();
+            @include noDecoration;
+            @include notSelectable;
+            *{
+                @include flexCenter();
+                @include noDecoration;
+                @include notSelectable;
+                color: white;
+
+                &#vetek{
+                    cursor: pointer;
+                    color: $color-text-grey;
+                    opacity: 0.3;
+                    font-weight: 700;
+                }
+            }
+            @include notMobile{
+                flex-direction: row;
+                @include desktop{
+                    flex-direction: column;
+                }
+            }
+            @include landscape{
+                flex-direction: row;
+                @include desktop{
+                    flex-direction: column;
+                }
+            }
+            .details{
+                .title{
+                    padding: 1rem;
+                    flex-direction: row;
+
+                    font-size: 3rem;
+                    @include desktop{
+                        font-size: 6rem;
+                    }
+                    
+                    font-family: $font-lato;
+                    text-transform: capitalize;
+
+                    &.light{
+                        font-weight: 300;
+
+                        .reg{
+                            font-weight: 400;
+                        }
+                    }
+
+                    
+                }
+
+                .date{
+                    font-size: 3rem;
+                    font-weight: 300;
+                }
+            }
+            .logo{
+                // @include flex(1,1,0);
+                @include display_flex;
+                @include landscape{
+                    flex-direction: row;
+                }
+                width: $full;
+                @include notMobile{
+                    position: relative;
+                    width: 20%;
+                    padding-bottom: 20%;
+                    // height: 0;
+                    overflow: visible;
+                    @include desktop{
+                        position: initial;
+                            width: $full;
+                            padding-bottom: initial;
+                            overflow: initial;
+                    }
+                }
+                
+                @include landscape{
+                    position: relative;
+                    width: 20%;
+                    padding-bottom: 20%;
+                    // height: 0;
+                    overflow: visible;
+                    @include desktop{
+                        position: initial;
+                        width: $full;
+                        padding-bottom: initial;
+                        overflow: initial;
+                    }
+                    
+                    
+                }
+                @include desktop{
+                    @include landscape{
+                        width: $full;
+                    }
+                }
+                img{
+                    width: 40%;
+                    
+                    @include landscape{
+                        top: 0;
+                        position: absolute;
+                        height: $full;
+                        width: initial;
+                    }
+                    @include notMobile{
+                        top: 0;
+                        position: absolute;
+                        height: $full;
+                        width: initial;
+                    }
+                    @include desktop{
+                        top: initial;
+                        position: initial;
+                        height: initial;
+                        width: 40%;
+                        @include landscape{
+                            top: initial;
+                            position: initial;
+                            height: initial;
+                            width: 40%;
+                        }
+                    }
+                    object-fit: contain;
+                }
+                
+            }
+        }
+
+        &#actions{
+            background-color: $color-grey;
+            flex-direction: column-reverse;
+            @include desktop{
+                flex-direction: column;
+            }
+
+            *{
+                
+                // @include flexCenter();
+                // @include flex(1,1,0);
+            }
+
+            .actionGroup{
+                // @include display_flex;
+                // @include flex(5,1,0);
+                @include display_flex;
+                @include flex(5,1,0);
+                @include desktop{
+                    @include flex(14,1,0);
+                }
+                
+                // flex-basis: 50%;
+                
+                // position: relative;
+
+                
+                .container{
+                    @include insetCard();
+                    *{
+                        @include flexCenter();
+                        @include flex(1,1,0);
+                    }
+                    flex-wrap: wrap;
+                    // flex-direction: row;
+                    width: $full;
+                    height: $full;
+                    @include display_flex;
+                    
+                }
+                
+                .action{
+                    @include noDecoration;
+                    @include notSelectable;
+                    max-width: 50%;
+                    min-width: 50%;
+                    // height: $full;
+                    // max-height: 50%;
+                    // flex-basis: 50%;
+                    @include flex(1,1,0);
+                    cursor: pointer;
+                    // @include card2();
+                    
+                    @include desktop{
+                        @include insetCard();
+                        &:hover{
+                            background-color: white;
+                            // @include insetCard();
+                            @include card();
+                        }
+                    }
+
+                    a{
+                        width: $full;
+                        height: $full;
+                        min-height: max-content;
+                        @include flex(1,1,0);
+                        @include flexCenter();
+                        flex-direction: column;
+                        @include noDecoration;
+                        // color: white;
+                        color: $color-hackgsu;
+                        cursor: pointer;
+
+        
+                        *{
+                            @include notSelectable;
+                            @include flexCenter;
+                            @include flex(1,1,0);
+                            // margin: auto;
+                            max-height: fit-content;
+                            min-height: max-content;
+                            min-width: max-content;
+                            @include noDecoration();
+                            cursor: pointer;
+                        }
+                        i{
+                            @include flex(1,1,0);
+                            // font-size: 100px;
+                            // line-height: 100px;
+                            font-size: 6vw;
+                            @include portrait{
+                                font-size: 10vw;
+                            }
+                            @include notMobile{
+                                @include portrait{
+                                    font-size: 6vw;
+                                }
+                            }
+                            @include desktop{
+                                font-size: 6vw;
+                                
+                            }
+                            
+                            // margin: auto;
+                        }
+                        span{
+                            @include flex(1,1,0);
+                            // margin: 3vw 1rem;
+                            
+                            margin: 1vw;
+                            
+                            // flex-wrap: wrap;
+                            // word-break: break-all;/
+                            // word-wrap: break-word;
+                            // text-overflow: clip;
+                            font-size: 1.2rem;
+                            @include desktop{
+                                font-size: 2rem;
+                            }
+                            width: $full;
+                            min-width: 0;
+                            text-align: center;
+                            // position: relative;
+                            
+
+                            
+                        }
+                        .description{
+                            position: absolute;
+                            bottom: 1rem;
+                            font-size: 60%;
+                            font-weight: 700;
+                            opacity: .6;
+                            margin: 0;
+                        }
+
+
+                    }
+                    
+                }
+                .registration, .faq{
+                    a{
+                        // color: $color-hackgsu;
+                        opacity: 0.3
+                    }
+                }
+            }
+
+            .subGroup{
+                min-height: max-content;
+                @include display_flex;
+                @include flex(1,1,0);
+                background-color: $color-blue;
+                align-items: center;
+                justify-content: center;
+                // border-bottom: 1rem solid $color-red;
+                *{
+                    @include noDecoration;
+                    color: white;
+                }
+                .container{
+                    *{
+                        @include flexCenter();
+                        @include flex(1,1,0);
+                    }
+                    flex-wrap: wrap;
+                    // flex-direction: row;
+                    width: $full;
+                    height: $full;
+                    @include display_flex;
+
+                    .subGroupAction{
+                        @include noDecoration;
+                        cursor: pointer;
+                        @include flexCenter();
+                        @include flex(1,1,0);
+                        *{
+                            cursor: pointer;
+                        }
+                        @include desktop{
+                            // @include card2();
+                            &:hover{
+                                background-color: rgba(white, 0.1);
+                                @include insetCard();
+                            }
+                        }
+                        a{
+                            @include flex(1,1,0);
+                            width: $full;
+                            @include noDecoration;
+                            @include notSelectable;
+                            cursor: pointer;
+                            *{
+                                cursor: pointer;
+                                text-align: center;
+                                font-size: 1.1rem;
+                                @include desktop{
+                                    font-size: 2rem;
+                                }
+                                
+                            }
+                            flex-direction: row;
+                            .circle{
+                                max-height: 2rem;
+                                max-width: 2rem;
+                                min-width: 2rem;
+                                min-height: 2rem;
+                                height: 2rem;
+                                line-height: 2rem;
+                                margin: 0.5rem;
+                                color: $color-blue;
+                                background-color: white;
+                                border-radius: 1000px;
+
+                            }
+                            span{
+                                @include notSelectable;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
+        
+        
+    }
+}
+
+#end{
+    @include flex(0,1,0);
+    background-color: $color-grey;
+    // @include cardInset();
+    @include insetCard();
+}

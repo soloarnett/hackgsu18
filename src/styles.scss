@@ -1,1 +1,56 @@
-/* You can add global styles to this file, and also import other style files */
+@import './src/assets/styles/main';
+
+body,html, app-root, app-home{
+	width: $full;
+	height: $full;
+	overflow: hidden;
+	min-height: max-content;
+	margin: 0;
+	// background-color: $color-grey;
+	-webkit-overflow-scrolling: touch;
+	@include display_flex;
+	flex-direction: column;
+	@include flex(1,1,0);
+}
+
+router-outlet{
+	// overflow: auto;
+}
+
+app-home{
+	// overflow: initial;
+}
+
+
+html{
+	// overflow: hidden;
+	font-size: 62.5%;
+}
+
+body{
+	font-size: 1.4rem;
+}
+
+::-webkit-contacts-auto-fill-button {
+	visibility: hidden;
+	display: none !important;
+	pointer-events: none;
+	position: absolute;
+	right: 0;
+}
+
+::-webkit-credentials-auto-fill-button {
+	visibility: hidden;
+}
+
+input::-webkit-contacts-auto-fill-button {
+	visibility: hidden;
+	display: none !important;
+	pointer-events: none;
+	position: absolute;
+	right: 0;
+}
+
+input::-webkit-credentials-auto-fill-button {
+	visibility: hidden;
+}
