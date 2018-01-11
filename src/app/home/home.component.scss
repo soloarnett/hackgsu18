@@ -234,11 +234,11 @@ section{
                     // @include card2();
                     
                     @include desktop{
-                        @include insetCard();
+                        // @include insetCard();
                         &:hover{
                             background-color: white;
-                            // @include insetCard();
-                            @include card();
+                            @include insetCard();
+                            // @include card();
                         }
                     }
 
@@ -321,7 +321,7 @@ section{
                     }
                     
                 }
-                .registration, .faq{
+                .registration, .faq, .travel{
                     a{
                         // color: $color-hackgsu;
                         opacity: 0.3
@@ -351,7 +351,7 @@ section{
                     width: $full;
                     height: $full;
                     @include display_flex;
-
+                    
                     .subGroupAction{
                         @include noDecoration;
                         cursor: pointer;
@@ -378,7 +378,7 @@ section{
                                 text-align: center;
                                 font-size: 1.1rem;
                                 @include desktop{
-                                    font-size: 2rem;
+                                    font-size: 1.5rem;
                                 }
                                 
                             }
@@ -390,6 +390,14 @@ section{
                             }
                         }
                     }
+
+                    .registrationAlt{
+                        a{
+                            // color: $color-hackgsu;
+                            opacity: 0.3
+                        }
+                    }
+                    
                 }
             }
             
