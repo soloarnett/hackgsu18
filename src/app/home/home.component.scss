@@ -12,7 +12,10 @@ a:active{
     background-color: rgba($color-text-grey, 0.4);
 }
 *{
-    @include quickTransitionColors();
+    @include quickTransitionColors;
+}
+*:hover{
+    @include quickTransitionColors;
 }
 
 section{
@@ -321,7 +324,7 @@ section{
                     }
                     
                 }
-                .registration, .faq, .travel{
+                .faq{
                     a{
                         // color: $color-hackgsu;
                         opacity: 0.3
@@ -391,12 +394,12 @@ section{
                         }
                     }
 
-                    .registrationAlt{
-                        a{
-                            // color: $color-hackgsu;
-                            opacity: 0.3
-                        }
-                    }
+                    // .registrationAlt, .slack{
+                    //     a{
+                    //         // color: $color-hackgsu;
+                    //         opacity: 0.3
+                    //     }
+                    // }
                     
                 }
             }

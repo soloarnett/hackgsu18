@@ -10,23 +10,26 @@ export class HomeComponent implements OnInit {
 
   actionGroupActions:Array<string> = [
     // Registration Link
-    "#registration",
+    "http://goo.gl/ESF8Mj",
     //Volunteer Link
-    "https://hackgsuspring2018.typeform.com/to/Jxrdks",
+    // "https://hackgsuspring2018.typeform.com/to/Jxrdks",
+    // Sponsor Us Link
+    "http://sponsors.hackgsu.com/hackGSU_Sponsorship_packet.pdf",
     // FAQ Link
     "#faq",
     // Travel Reimbursment Link
-    // "https://hackgsuspring2018.typeform.com/to/EM26kg",
-    "#"
+    "https://hackgsuspring2018.typeform.com/to/EM26kg",
+    // "#"
   ];
 
   subGroupActions:Array<string> = [
-    "mailto:hackgsu@gmail.com",
+    "mailto:hackathon@cs.gsu.edu",
     // slack
-    "https://join.slack.com/t/hackgsuspring2018/shared_invite/enQtMjk3NjU4NDA3Njk4LTNjOWU5MDExZDkxMDIzZDQ3ZTYyYjA4NDY3ZjBmZWI2ZjI0OWNhYTlkYWJiNjY0MWFlNmI3MzZkZTAzZDdkMzM",
+    "https://goo.gl/ByrTkF",
+    // "#",
     // google form registration
-    // "https://goo.gl/forms/wKNQA7wUcHkagtSQ2",
-    "#"
+    "https://goo.gl/forms/Pimkr6twZ2Q2YoJ52",
+    // "#"
   ]
   constructor() { }
 
