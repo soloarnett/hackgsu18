@@ -324,19 +324,19 @@ section{
                     }
                     
                 }
-                .faq{
-                    a{
-                        // color: $color-hackgsu;
-                        opacity: 0.3
-                    }
-                }
+                // .faq{
+                //     a{
+                //         // color: $color-hackgsu;
+                //         opacity: 0.3
+                //     }
+                // }
             }
 
             .subGroup{
                 min-height: max-content;
                 @include display_flex;
                 @include flex(1,1,0);
-                background-color: $color-blue;
+                background-color: $color-hackgsu-blue;
                 align-items: center;
                 justify-content: center;
                 // border-bottom: 1rem solid $color-red;

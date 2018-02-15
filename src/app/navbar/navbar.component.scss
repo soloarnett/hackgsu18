@@ -1,0 +1,131 @@
+@import './src/assets/styles/main';
+
+#navbar{
+    @include card2;
+    position: fixed;
+    bottom: 0;
+    @include notMobile{
+        bottom: initial;
+        top: 0;
+    }
+    left: 0;
+    width: $full;
+    height: 50px;
+    background-color: $color-hackgsu;
+    color: white;
+    @include display_flex;
+    // border-bottom: 1px solid $color-black;
+    align-items: center;
+    *{
+        @include noDecoration;
+        @include notSelectable;
+    }
+    .menuButton{
+        padding: 1rem;
+        cursor: pointer;
+        i{
+            font-size: 3rem;
+            pointer-events: none;
+            cursor: pointer;
+        }
+    }
+    .name{
+        @include flexCenter;
+        @include absoluteCenter;
+        span{
+            font-size: 2rem;
+            font-weight: 300;
+        }
+    }
+    z-index: 2;
+}
+#navbarSpacer{
+    @include notMobile{
+        height: 50px;
+    }
+}
+
+#menu{
+    position: fixed;
+    bottom: 50px;
+    @include display_flex;
+    flex-direction: column-reverse;
+    @include notMobile{
+        flex-direction: column;
+        bottom: initial;
+        top: 50px;
+    }
+    left: 0;
+    background-color: $color-hackgsu;
+    width: $full;
+    height: calc(100% - 50px);
+    @include card2;
+    // border-top: 5px solid white;
+    @include notMobile{
+        width: 30%;
+    }
+    z-index: 1;
+    
+    
+    
+    &.open{
+        @include transitionCust(transform, .6s, 0s, ease);
+        transform: translateY(0%);
+        opacity: 1;
+        @include notMobile{
+            transform: translateX(0%);
+        }
+
+        
+    }
+
+    &.closed{
+        @include transitionCust(transform, .3s, 0s, ease-in-out);
+        transform: translateY(100%);
+        opacity: 1;
+        
+        @include notMobile{
+            transform: translateX(-100%);
+        }
+
+        @keyframes invisible{
+            from{
+                opacity: 1;
+            }
+            to{
+                opacity: 0;
+            }
+        }
+
+        animation: invisible 0s linear .3s forwards;
+
+    }
+
+    .menuLink{
+        @include noDecoration;
+        @include notSelectable;
+        cursor: pointer;
+    }
+
+    .menuItem{
+        @include flexCenter;
+        flex-direction: row;
+        // background-color: white;
+        margin: 3rem;
+        border-radius: 2px;
+        cursor: pointer;
+        *{
+            @include noDecoration;
+            @include notSelectable;
+            cursor: pointer;
+            color: white;
+        }
+        span{
+            // color: white;
+            padding: 1rem 2rem;
+            display: block;
+            font-size: 2rem;
+            
+        }
+    }
+}

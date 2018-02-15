@@ -1,0 +1,20 @@
+<div class="container">
+
+  <app-navbar></app-navbar>
+
+  <section class="head">
+    <span class="pageHeader">Frequently Asked Questions</span>
+  </section>
+
+  <section class="faqList">
+    <div class="faqItem" *ngFor="let faqItem of faq">
+      <div class="question">
+        <span class="text">{{faqItem.title}}</span>
+      </div>
+      <div class="divider"></div>
+      <div class="response">
+          <span class="text" [innerHTML]="faqItem.content | safe: 'html'"></span>
+      </div>
+    </div>
+  </section>
+</div>
