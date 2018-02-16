@@ -8,12 +8,60 @@ body,html{
 
 #schedule{
     height: $full;
-
+    @include notMobile{
+        height: calc(100% - 50px);
+    }
+    @include display_flex;
+    flex-direction: column;
     .dayController{
         background-color: $color-hackgsu-blue;
-        height: 30%;
+        @include flex(3,1,0);
+        @include display_flex;
+        color: white;
+        @include card2;
+
+        .container{
+            @include flex(1,1,0);
+            padding: 2rem;
+            @include flexBetween(true);
+            align-items: flex-start;
+
+            .otherDays{
+                @include display_flex;
+                .day:first-child{
+                    margin-right: 2rem;
+                }
+                .day{
+                    font-size: 2rem;
+                }
+            }
+            .currentDay{
+                @include display_flex;
+                flex-direction: column;
+                *{
+                    font-size: 10vw;
+                    font-weight: 700;
+                    @include notMobile{
+                        font-size: 5rem;
+                    }
+                }
+                .date{
+                    opacity: 0.6;
+                }
+            }
+        }
     }
     .events{
-        height: 70%;
+        @include flex(7,1,0);
+        padding: 2rem;
+        overflow: auto;
+        // @include display_flex;
+        .event{
+            // margin: 1rem;
+            background-color: white;
+            height: 100px;
+            @include card2;
+            margin-bottom: 1rem;
+        }
     }
 }

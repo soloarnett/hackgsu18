@@ -1,11 +1,22 @@
 <app-navbar></app-navbar>
 <section id="schedule">
-  <div class="dayController">
+  <div class="dayController noDS">
     <div class="container">
       <div class="otherDays">
-        <div class="day" *ngFor="let day of otherDays">{{day}}</div>
+        <span class="day" *ngFor="let day of otherDays">{{day}}</span>
+      </div>
+      <div class="currentDay">
+        <span class="day">{{currentDay}}</span>
+        <span class="date">{{currentDate}}</span>
       </div>
     </div>
   </div>
-  <div class="events"></div>
+  <div class="events">
+    <div class="event" *ngFor="let event of events">
+      <div class="info">
+
+      </div>
+      <div class="time"></div>
+    </div>
+  </div>
 </section>
