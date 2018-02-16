@@ -1,4 +1,4 @@
-<section id="navbar">
+<section id="navbar" [class]="open ? 'open' : 'closed'">
   <div class="menuButton" (click)="toggleMenuState()">
     <i class="material-icons" *ngIf="!open">menu</i>
     <i class="material-icons" *ngIf="open">close</i>
@@ -13,6 +13,12 @@
     <div class="menuItem">
         <i class="material-icons">home</i>
         <span>Home</span>
+      </div>
+  </a>
+  <a class="menuLink" routerLink="/schedule" routerLinkActive="active" href="">
+    <div class="menuItem">
+        <i class="material-icons">event</i>
+        <span>Schedule</span>
       </div>
   </a>
 </section>

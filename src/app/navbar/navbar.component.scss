@@ -3,15 +3,29 @@
 #navbar{
     @include card2;
     position: fixed;
-    bottom: 0;
+    bottom: 4rem;
+    right: 4rem;
+    max-width: fit-content;
+    border-radius: 1000rem;
+    overflow: hidden;
+    // width: 40vw;
+    // height: 40vw;
     @include notMobile{
+        left: 0;
+        height: 50px;
+        overflow: initial;
+        border-radius: initial;
+        max-width: initial;
         bottom: initial;
         top: 0;
+        width: $full;
     }
-    left: 0;
-    width: $full;
-    height: 50px;
-    background-color: $color-hackgsu;
+    
+    background-color: $color-hackgsu-blue;
+    @include notMobile{
+        // background-color: $color-hackgsu;
+    }
+    
     color: white;
     @include display_flex;
     // border-bottom: 1px solid $color-black;
@@ -21,23 +35,47 @@
         @include notSelectable;
     }
     .menuButton{
-        padding: 1rem;
+        padding: 1.5rem;
+        @include notMobile{
+            padding: 1rem;
+        }
         cursor: pointer;
         i{
             font-size: 3rem;
+            line-height: 3rem;
+            vertical-align: middle;
             pointer-events: none;
             cursor: pointer;
         }
     }
     .name{
-        @include flexCenter;
-        @include absoluteCenter;
-        span{
-            font-size: 2rem;
-            font-weight: 300;
+        display: none;
+        @include notMobile{
+            @include flexCenter;
+            @include absoluteCenter;
+            span{
+                font-size: 2rem;
+                font-weight: 300;
+            }
         }
+        
     }
     z-index: 2;
+    
+    // &.open{
+    //     @include mobile{
+    //         @include transitionCust(all, .4s, 0s, ease);
+    //         background-color: white;
+    //         color: $color-hackgsu;
+    //     }
+    // }
+
+    // &.closed{
+    //     @include mobile{
+    //         @include transitionCust(all, .4s, 0s, ease);
+            
+    //     }
+    // }
 }
 #navbarSpacer{
     @include notMobile{
@@ -47,21 +85,30 @@
 
 #menu{
     position: fixed;
-    bottom: 50px;
+    // bottom: 50px;
     @include display_flex;
-    flex-direction: column-reverse;
+    // flex-direction: column-reverse;
+    @include mobile{
+        @include flexCenter;
+    }
     @include notMobile{
         flex-direction: column;
         bottom: initial;
         top: 50px;
     }
     left: 0;
-    background-color: $color-hackgsu;
+    background-color: $color-grey;
+    @include notMobile{
+        // background-color: $color-hackgsu;    
+        background-color: white;
+    }
+    
     width: $full;
-    height: calc(100% - 50px);
+    height: $full;
     @include card2;
     // border-top: 5px solid white;
     @include notMobile{
+        height: calc(100% - 50px);
         width: 30%;
     }
     z-index: 1;
@@ -69,11 +116,11 @@
     
     
     &.open{
-        @include transitionCust(transform, .6s, 0s, ease);
-        transform: translateY(0%);
+        @include transitionCust(transform, .4s, 0s, ease);
+        transform: translateX(0%);
         opacity: 1;
         @include notMobile{
-            transform: translateX(0%);
+            @include transitionCust(transform, .5s, 0s, ease);
         }
 
         
@@ -81,12 +128,8 @@
 
     &.closed{
         @include transitionCust(transform, .3s, 0s, ease-in-out);
-        transform: translateY(100%);
+        transform: translateX(-100%);
         opacity: 1;
-        
-        @include notMobile{
-            transform: translateX(-100%);
-        }
 
         @keyframes invisible{
             from{
@@ -109,7 +152,12 @@
 
     .menuItem{
         @include flexCenter;
-        flex-direction: row;
+        // flex-direction: row;
+        @include notMobile{
+            flex-direction: row;
+            justify-content: flex-start;
+            transform: translateX(20%)
+        }
         // background-color: white;
         margin: 3rem;
         border-radius: 2px;
@@ -118,14 +166,26 @@
             @include noDecoration;
             @include notSelectable;
             cursor: pointer;
-            color: white;
+            color: $color-hackgsu;
+            @include notMobile{
+                // color: white;
+                // color: $color-hackgsu-blue;
+            }
+            
         }
         span{
             // color: white;
             padding: 1rem 2rem;
             display: block;
             font-size: 2rem;
-            
+            @include mobile{
+                font-weight: 300;
+            }
+        }
+        i{
+            @include mobile{
+                font-size: 20vw;
+            }
         }
     }
 }

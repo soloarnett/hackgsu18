@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { FaqComponent } from './faq/faq.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SafePipe } from './safe.pipe';
+import { TestComponent } from './test/test.component';
+import { ScheduleComponent } from './schedule/schedule.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { SafePipe } from './safe.pipe';
     Page404Component,
     FaqComponent,
     NavbarComponent,
-    SafePipe
+    SafePipe,
+    TestComponent,
+    ScheduleComponent
   ],
   imports: [
     BrowserModule,

@@ -5,16 +5,26 @@
 	@include notSelectable;
 }
 body,html, app-root, app-home, app-faq{
+	// width: $full;
+	// height: $full;
+	// overflow: hidden;
+	// overflow: visible;
+	// min-height: max-content;
+	// margin: 0;
+	// background-color: $color-grey;
+	// -webkit-overflow-scrolling: touch;
+	// @include display_flex;
+	// flex-direction: column;
+	// @include flex(1,1,0);
 	width: $full;
-	height: $full;
-	overflow: hidden;
-	min-height: max-content;
+	// height: $full;
+	// position: fixed;
+	// height: $full;
+	overflow: visible;
+	// min-height: max-content;
 	margin: 0;
 	// background-color: $color-grey;
 	-webkit-overflow-scrolling: touch;
-	@include display_flex;
-	flex-direction: column;
-	@include flex(1,1,0);
 }
 
 router-outlet{

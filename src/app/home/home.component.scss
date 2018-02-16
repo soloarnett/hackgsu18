@@ -1,9 +1,15 @@
 @import './src/assets/styles/main';
-
+body,html{
+    height: $full;
+    background-color: $color-hackgsu;
+    position: fixed;
+}
 app-home{
 //     width: $full;
-//     height: $full;
+    height: $full;
     background-color: $color-hackgsu;
+    // position: absolute;
+    @include display_flex;
 }
 a{
     @include notSelectable();

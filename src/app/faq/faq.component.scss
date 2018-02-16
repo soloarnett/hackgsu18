@@ -1,5 +1,8 @@
 @import './src/assets/styles/main';
 
+body,html{
+    background-color: $color-grey;
+}
 app-faq{
     height: $full;
     overflow: auto;
@@ -20,7 +23,7 @@ app-faq{
         margin-top: 1rem;
         padding: 1rem;
         font-weight: 700;
-        font-size: 2rem;
+        font-size: calc(1rem + 1.5vw);
         @include notMobile{
             margin-top: 2rem;
             padding: 2rem;

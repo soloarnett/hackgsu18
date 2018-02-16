@@ -25,7 +25,8 @@ export class HomeComponent implements OnInit {
   subGroupActions:Array<string> = [
     "mailto:hackathon@cs.gsu.edu",
     // slack
-    "https://goo.gl/ByrTkF",
+    // "https://goo.gl/ByrTkF",
+    "https://hackgsuspring18.slack.com/join/shared_invite/enQtMzAwNjE2Mjc4MzU2LTA4MDc3NGRjODA5MWNmNzM5NWRjYjczYWE3ZmY4Y2M2NTdlMzQyOWE1Mzk0Mzk3YTBmODA1MTA2MTY1ODUwOGY",
     // "#",
     // google form registration
     "https://goo.gl/forms/Pimkr6twZ2Q2YoJ52",

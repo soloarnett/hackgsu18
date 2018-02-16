@@ -1,0 +1,19 @@
+@import './src/assets/styles/main';
+
+body,html{
+    background-color: $color-grey;
+    height: $full;
+    position: fixed;
+}
+
+#schedule{
+    height: $full;
+
+    .dayController{
+        background-color: $color-hackgsu-blue;
+        height: 30%;
+    }
+    .events{
+        height: 70%;
+    }
+}
