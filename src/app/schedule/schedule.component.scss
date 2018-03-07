@@ -3,22 +3,47 @@
 body,html{
     background-color: $color-grey;
     height: $full;
-    position: fixed;
+}
+
+app-schedule{
+    height: $full;
+    overflow: auto;
 }
 
 #schedule{
-    height: $full;
+    // height: $full;
+    // margin-top: -1px;
     @include notMobile{
-        height: calc(100% - 50px);
+        // height: calc(100% - 50px);
+        margin-top: initial;
     }
-    @include display_flex;
-    flex-direction: column;
+    // @include display_flex;
+    // flex-direction: column;
     .dayController{
+        .topfix{
+            position: absolute;
+            top: -2px;
+            height: 4px;
+            background-color: $color-hackgsu-blue;
+            left: 0;
+            width: $full;
+        }
+        overflow: visible;
         background-color: $color-hackgsu-blue;
-        @include flex(3,1,0);
+        // @include flex(3,1,0);
+        // position: absolute;
+        width: $full;
+        // height: 30%;
         @include display_flex;
         color: white;
         @include card2;
+        position: fixed;
+        height: 30%;
+        @include transition(height, .8s, 1s);
+        z-index: 1;
+        @include notMobile{
+            margin-top: 50px;
+        }
 
         .container{
             @include flex(1,1,0);
@@ -28,11 +53,13 @@ body,html{
 
             .otherDays{
                 @include display_flex;
+                // margin-bottom: 4rem;
                 .day:first-child{
                     margin-right: 2rem;
                 }
                 .day{
                     font-size: 2rem;
+                    text-transform: capitalize;
                 }
             }
             .currentDay{
@@ -48,20 +75,96 @@ body,html{
                 .date{
                     opacity: 0.6;
                 }
+                .day{
+                    text-transform: capitalize;
+                }
             }
         }
     }
     .events{
-        @include flex(7,1,0);
+        // @include flex(7,1,0);
+        position: absolute;
+        top: 30%;
+        @include notMobile{
+            top: calc(30% + 50px);
+        }
         padding: 2rem;
-        overflow: auto;
+        padding-bottom: 12rem;
+        @include notMobile{
+            padding: 2rem 20vw;
+        }
+        // padding-top: 30%;
+        width: $full;
+        // min-height: fit-content;
         // @include display_flex;
         .event{
             // margin: 1rem;
             background-color: white;
-            height: 100px;
-            @include card2;
+            // height: 100px;
+            // @include card2;
             margin-bottom: 1rem;
+
+            @include display_flex;
+            padding: 2rem;
+
+            .info{
+                @include flex(2,1,0);
+                // @include flexBetween(true);
+                @include display_flex;
+                flex-direction: column;
+                .mainInfo{
+                    @include display_flex;
+                    flex-direction: column;
+                    .title{
+                        font-size: 1.8rem;
+                        font-weight: 700;
+                        @include notMobile{
+                            font-size: 3rem;
+                        }
+                    }
+                    .location{
+                        color: $color-hackgsu-blue;
+                        // font-weight: 300;
+                        font-size: 1.2rem;
+                        @include notMobile{
+                            font-size: 2rem;
+                        }
+                    }
+                }
+                .description{
+                    margin-top: 1rem;
+                    @include notMobile{
+                        font-size: 2rem;
+                    }
+                }
+            }
+            .time{
+                @include flex(1,1,0);
+                @include display_flex;
+                // flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                color: $color-hackgsu-blue;
+                .hour{
+                    font-size: 5rem;
+                    font-weight: 700;
+                }
+                .smallTime{
+                    @include display_flex;
+                    flex-direction: column;
+                    text-transform: uppercase;
+                    margin-left: 0.2rem;
+                    *{
+                        font-size: 2rem;
+                        line-height: 2rem;
+                        height: 2rem;
+                    }
+                    .period{
+                        align-self: flex-end;
+                    }
+                }
+                // background-color: $color-grey;
+            }
         }
     }
 }

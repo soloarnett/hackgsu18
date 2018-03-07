@@ -12,6 +12,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SafePipe } from './safe.pipe';
 import { TestComponent } from './test/test.component';
 import { ScheduleComponent } from './schedule/schedule.component';
+// import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -23,12 +26,14 @@ import { ScheduleComponent } from './schedule/schedule.component';
     NavbarComponent,
     SafePipe,
     TestComponent,
-    ScheduleComponent
+    ScheduleComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -85,11 +85,22 @@
 
 #menu{
     position: fixed;
+    overflow-x: hidden;
     // bottom: 50px;
     @include display_flex;
     // flex-direction: column-reverse;
     @include mobile{
         @include flexCenter;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        align-content: center;
+        @include tablet{
+            align-content: initial;
+            justify-content: initial;
+            flex-direction: column;
+            align-items: flex-start;
+        }
     }
     @include notMobile{
         flex-direction: column;
@@ -156,7 +167,10 @@
         @include notMobile{
             flex-direction: row;
             justify-content: flex-start;
-            transform: translateX(20%)
+            transform: translateX(20%);
+            @include tablet{
+                transform: translateX(0);
+            }
         }
         // background-color: white;
         margin: 3rem;
@@ -185,6 +199,9 @@
         i{
             @include mobile{
                 font-size: 20vw;
+                @include tablet{
+                    font-size: 2rem;
+                }
             }
         }
     }
