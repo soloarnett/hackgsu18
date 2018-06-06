@@ -1,0 +1,264 @@
+@import './src/assets/styles/main';
+
+:host, app-about{
+    color: white;
+    *{
+        color: white;
+    }
+    .backButton{
+        @include noDecoration;
+        position: absolute;
+        top: 2rem;
+        left: 2rem;
+        cursor: pointer;
+        i{
+            @include noDS;
+            cursor: pointer;
+            font-size: 4rem;
+            color: white;
+        }
+    }
+    .container{
+        @include display_flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        height: $full;
+
+        .title{
+            @include flex(1,1,0);
+            max-height: fit-content;
+            @include display_flex;
+            flex-direction: column;
+            // justify-content: center;
+            span{
+                @include noDS;
+                font-size: 2rem;
+                padding: 2rem;
+                line-height: 4rem;
+                vertical-align: middle;
+            }
+        }
+        .developers{
+            @include flex(3,1,0);
+            @include display_flex;
+            width: $full;
+            padding: 2rem;
+            flex-direction: column;
+            @include notMobile{
+                flex-direction: row;
+            }
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+
+            .developer:not(:last-child){
+                margin-bottom: 1rem;
+                @include notMobile{
+                    // margin-bottom: initial;
+                }
+            }
+
+            .developerList, .interview{
+                @include flex(1,1,0);
+            }
+            .interview{
+                // background-color: $color-grey;
+                margin-top: 2rem;
+                @include notMobile{
+                    margin-top: initial;
+                }
+                @include display_flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                *{
+                    min-height: fit-content;
+                    @include notMobile{
+                        min-height: initial;
+                    }
+                }
+                .header{
+                    @include display_flex;
+                    @include flexCenter;
+                    justify-content: flex-start;
+                    // align-items: flex-end;
+                    .head{
+                        @include display_flex;
+                        flex-direction: row;
+                        align-items: center;
+                        img{
+                            width: 4rem;
+                            height: 4rem;
+                            object-fit: contain;
+                            min-height: initial !important;
+                        }
+                        span{
+                            font-size: 2rem;
+                            max-height: min-content;
+                        }
+                    }
+                    .description{
+                        font-size: 1rem;
+                        padding: 1rem;
+                        margin: 4rem;
+                        border: 0.2rem solid white;
+                        border-radius: 0.5rem;
+                        line-height: 1.5rem;
+                    }
+                }
+                .body{
+                    @include flexCenter;
+                    justify-content: flex-start;
+                    
+                    .input{
+                        @include display_flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        .label{
+                            margin-bottom: 0.5rem;
+                            font-weight: 700;
+                            // color: 
+                        }
+                        input{
+                            @include noDecoration;
+                            padding: 1rem 1.5rem;
+                            font-size: 1.5rem;
+                            color: $color-hackgsu;
+                            margin: 0;
+                            border: none;
+                            border-radius: 5px;
+                        }
+                    }
+                    .input:not(:last-child){
+                        margin-bottom: 1rem;
+                    }
+
+                    .yesNo{
+                        margin-bottom: 2rem;
+                        .label{
+
+                        }
+                        .options{
+                            @include flexCenter;
+                            flex-direction: row;
+                            .option{
+                                padding: 1rem;
+                                margin: 1rem;
+                                cursor: pointer;
+                                span{
+                                    @include noDS;
+                                    cursor: pointer;
+                                }
+                            }
+                        }
+                    }
+
+                }
+
+                
+            }
+            .developer{
+                // background-color: $color-text-grey;
+                // @include card2_noTrans;
+                // @include insetCard;
+                @include display_flex;
+                // width: $full;
+                @include flex(1,1,0);
+                padding: 1rem;
+                justify-content: center;
+
+                .image{
+                    @include display_flex;
+                    // @include flex(1,1,0);
+                    overflow: hidden;
+                    // position: relative;
+                    // max-width: fit-content;
+                    // max-width: min-content;
+                    .imageContainer{
+                        // max-width: min-content;
+                        // width: $full;
+                        // position: relative;
+                        // min-width: fit-content;
+                        // height: $full;
+                        // padding-bottom: $full;
+                        // top: 0;
+                        width: 8rem;
+                        height: 8rem;
+                        // left: 0;
+                        @include flexCenter;
+                        max-height: fit-content;
+                        border-radius: $circle;
+                        overflow: hidden;
+                    }
+                    img{
+                        height: $full;
+                        width: $full;
+                        object-fit: cover;
+                    }
+                    margin-right: 2rem;
+                }
+                .info{
+                    @include flex(1,1,0);
+                    @include display_flex;
+                    flex-direction: column;
+                    max-width: max-content;
+                    // min-width: max-content;
+                    .name{
+                        margin-bottom: 0.5rem;
+                        span{
+                            font-size: 2rem;
+                            font-weight: 300;
+                        }
+                    }
+
+                    .position{
+                        margin-bottom: 0.5rem;
+                    }
+                    .company{
+                        margin-bottom: 1rem;
+                        span{
+                            font-weight: 700;
+                        }
+                    }
+
+                    .relatedLinks{
+                        @include display_flex;
+                        height: 2rem;
+                        // justify-content: flex-start;
+                        // align-items: center;
+                        // align-content: space-around;
+                        cursor: pointer;
+                        *{
+                            cursor: pointer;
+                        }
+                        .relatedLink:not(:last-child){
+                            margin-right: 1rem;
+                        }
+                        .relatedLink{
+                            @include display_flex;
+                            // @include flex(1,1,0);
+                            height: $full;
+                            width: 2rem;
+                            // max-width: fit-content;
+                            
+                            // overflow: hidden;
+                            // position: relative;
+                            img{
+                                // position: absolute;
+                                // border-radius: $circle;
+                                // top: 0;
+                                // left: 0;
+                                // overflow: hidden;
+                                width: $full;
+                                height: $full;
+                                object-fit: contain;
+                                cursor: pointer;
+                            }
+                            // margin-right: 2rem;
+                        }
+                    }
+                }
+                
+            }
+        }
+    }
+}

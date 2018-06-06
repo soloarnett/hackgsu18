@@ -1,0 +1,97 @@
+<div class="container" [class]="'container ' + loadInOutAnimation()">
+  <app-navbar id="navbarControl"></app-navbar>
+  <app-alert-window [class]="(alertActive ? 'active' : 'inactive') + ' ' + (alertVisible ? 'visible' : 'invisible')"></app-alert-window>
+  <div class="titleWindow">
+    <div class="content">
+      <!-- <img [src]="image" alt=""> -->
+      <i class="material-icons">group_add</i>
+      <div class="separator"></div>
+      <span>Get Help Now</span>
+    </div>
+  </div>
+
+  <div class="howitworks">
+    <span class="head">{{howitworks.label}}</span>
+    <span class="description">{{howitworks.description}}</span>
+  </div>
+  
+  <div class="request">
+      <div class="help">
+          <span class="label">How can we help?</span>
+        <textarea class="content" [(ngModel)]="requestInputs.description.content" [placeholder]="requestInputs.description.placeholder"></textarea>
+      </div>
+      <div class="additionalInfo">
+        <span class="additionalLabel">Additional Info</span>
+        <span class="additionalDescription">*You will only have to fill this out once.</span>
+        <div class="requestInputFields">
+          <div class="fields left">
+            <div class="input">
+              <span class="label">First Name*</span>
+              <input [class]="(requestInputs.firstname.prefilled ? 'prefilled ' : '') + (requestInputs.firstname.active ? 'active' : 'inactive')" type="text" name="firstname" [(ngModel)]="requestInputs.firstname.content" alt="What's your first name?" (click)="removePrefill('firstname')">
+            </div>
+            <div class="input">
+              <span class="label">Last Name*</span>
+              <input [class]="(requestInputs.lastname.prefilled ? 'prefilled ' : '') + (requestInputs.lastname.active ? 'active' : 'inactive')" type="text" name="lastname" [(ngModel)]="requestInputs.lastname.content" alt="What's your last name?" (click)="removePrefill('lastname')">
+            </div>
+  
+            <div class="input">
+              <span class="label">Email Address*</span>
+              <input [class]="(requestInputs.email.prefilled ? 'prefilled ' : '') + (requestInputs.email.active ? 'active' : 'inactive')" type="email" alt="What's your email address?" name="email" [(ngModel)]="requestInputs.email.content"  (click)="removePrefill('email')">
+            </div>
+  
+            <div class="input">
+              
+              <div class="rooms">
+                <div class="section">
+                    <span class="label">Room Number</span>
+                    <input [class]="requestInputs.room.active ? 'active' : 'inactive'" type="number" alt="What room are you in?" name="room" [(ngModel)]="requestInputs.room.content">
+                </div>
+                <span class="or">or</span>
+                <div class="section">
+                    <span class="label">Nearest Room</span>
+                    <input [class]="requestInputs.nearestRoom.active ? 'active' : 'inactive'" type="number" alt="What room are you near?" name="nearestRoom" [(ngModel)]="requestInputs.nearestRoom.content">
+                </div>
+              </div>
+  
+            </div>
+          </div>
+          <div class="fields right">
+            <div class="input">
+              <span class="label">Shirt Color</span>
+              <span class="description">{{requestInputs.shirtColor.description}}</span>
+              <input [class]="requestInputs.shirtColor.active ? 'active' : 'inactive'" type="text" name="shirtColor" alt="What color shirt do you have on?" [(ngModel)]="requestInputs.shirtColor.content">
+            </div>
+
+            <div class="input">
+              <span class="label">Team Name*</span>
+              <span class="description">{{requestInputs.teamName.description}}</span>
+              <input [class]="(requestInputs.teamName.prefilled ? 'prefilled ' : '') + (requestInputs.teamName.active ? 'active' : 'inactive')" type="text" name="team" alt="What team are you on?" [(ngModel)]="requestInputs.teamName.content"  (click)="removePrefill('teamName')">
+            </div>
+
+            <div class="input">
+                <span class="label">School Name*</span>
+                <span class="description">{{requestInputs.schoolName.description}}</span>
+                <input [class]="(requestInputs.schoolName.prefilled ? 'prefilled ' : '') + (requestInputs.schoolName.active ? 'active' : 'inactive')" type="text" name="school" alt="What school are you from?" [(ngModel)]="requestInputs.schoolName.content"  (click)="removePrefill('schoolName')">
+              </div>
+
+            <div class="input">
+              <span class="label">Favorite Programming Language</span>
+              <span class="description">{{requestInputs.favorite.description}}</span>
+              <input [class]="requestInputs.favorite.active ? 'active' : 'inactive'" type="text" alt="You probably shouldn't tell anyone else this at the hackathon? Tell them after." name="favorite" [(ngModel)]="requestInputs.favorite.content">
+            </div>
+          </div>
+          
+        </div>
+      </div>
+  </div>
+
+  <div class="submission">
+    <span (click)="submitRequest()">Submit</span>
+    <span routerLink="/support" routerLinkActive="active">Cancel</span>
+  </div>
+
+  <div class="agreement">
+    <span>{{agreement}}</span>
+  </div>
+  
+</div>

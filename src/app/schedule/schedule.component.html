@@ -1,6 +1,7 @@
-<section id="schedule">
-  <div class="dayController noDS">
-    <div class="topfix"></div>
+<section id="schedule" [class]="loadInOutAnimation()">
+  
+  <div class="topfix"></div>
+  <div class="dayController noDS">  
     <div class="container">
       <div class="otherDays">
         <span class="day" *ngFor="let day of otherDays" (click)="getDay(day)">{{day}}</span>
@@ -18,7 +19,7 @@
           <span class="title">{{event.title}}</span>
           <span class="location">{{event.location ? event.location : 'Atlanta'}}</span>
         </div>
-        <span class="description" *ngIf="event.description">{{event.description}}</span>
+        <span class="description" *ngIf="event.description" [innerHTML]="event.description"></span>
       </div>
       <div class="time">
         <div class="hour">{{event.hour}}</div>
@@ -33,4 +34,61 @@
     </div>
   </div>
 </section>
-<app-navbar></app-navbar>
+<section id="desktopSchedule" [class]="loadInOutAnimation()">
+
+  <div class="allEvents">
+    <div class="day" *ngFor="let day of events">
+      <div class="events">
+        <div class="dayController">
+          <span class="dayOfEvent">{{day.day}}</span>
+          <span class="date">{{day.date}}</span>
+        </div>
+        <div [class]="'event ' + (event.description ? 'hasDescription' : '')" *ngFor="let event of day.events" (click)="displayEvent(event.description)">   
+            <div class="evenItem time">
+              <span *ngIf="event.minutes">{{event.hour}}:{{event.minutes}}{{event.period}}</span>
+              <span *ngIf="!event.minutes">{{event.hour}}{{event.period}}</span>
+            </div>
+            <span class="evenItem title">{{event.title}}</span>
+            <span class="evenItem location">{{event.location ? event.location : 'Atlanta'}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- <div class="dayController noDS">  
+      <div class="container">
+        <div class="otherDays">
+          <span class="day" *ngFor="let day of otherDays" (click)="getDay(day)">{{day}}</span>
+        </div>
+        <div class="currentDay">
+          <span class="day">{{currentDay}}</span>
+          <span class="date">{{currentDate}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="events">
+      <div class="event" *ngFor="let event of eventsByDay">
+        <div class="info">
+          <div class="mainInfo">
+            <span class="title">{{event.title}}</span>
+            <span class="location">{{event.location ? event.location : 'Atlanta'}}</span>
+          </div>
+          <span class="description" *ngIf="event.description" [innerHTML]="event.description"></span>
+        </div>
+        <div class="time">
+          <div class="hour">{{event.hour}}</div>
+          <div class="smallTime">
+            <div class="minutes">{{event.minutes != 0 ? event.minutes : ''}}</div>
+            <!<div class="minutes"> -->
+              <!-- <span *ngIf="event.minutes != '0'">{{event.minutes}}</span> -->
+            <!-- </div> 
+            <div class="period" *ngIf="event.period">{{event.period}}</div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </section>
+<div class="nextDay" (click)="nextDay()">
+  <span>Next Day</span>
+</div>
+<app-navbar id="scheduleNavbar"></app-navbar>
+<app-alert-window [class]="(alertActive ? 'active' : 'inactive') + ' ' + (alertVisible ? 'visible' : 'invisible')"></app-alert-window>

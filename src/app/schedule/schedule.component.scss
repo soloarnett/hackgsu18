@@ -3,168 +3,308 @@
 body,html{
     background-color: $color-grey;
     height: $full;
+    position: relative;
 }
 
-app-schedule{
+
+
+:host, app-schedule{
+    
+
+
     height: $full;
     overflow: auto;
-}
-
-#schedule{
-    // height: $full;
-    // margin-top: -1px;
-    @include notMobile{
-        // height: calc(100% - 50px);
-        margin-top: initial;
+    background-color: $color-grey;
+    .nextDay{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        background-color: $color-hackgsu-blue;
+        border-radius: $circle;
+        z-index: 1;
+        bottom: 4rem;
+        left: 4rem;
+        @include noDS;
+        @include display_flex;
+        @include card2_noTrans;
+        cursor: pointer;
+        span{
+            @include noDS;
+            cursor: pointer;
+            padding: 1.5rem 2rem;
+            font-size: 2rem;
+            line-height: 3rem;
+            color: white;
+        }
+        @include desktop{
+            display: none;
+        }
     }
-    // @include display_flex;
-    // flex-direction: column;
-    .dayController{
+    #scheduleNavbar{
+        z-index: 2;
+    }
+    #schedule{
+        background-color: $color-grey !important;
+        // height: $full;
+        // margin-top: -1px;
+        @include notMobile{
+            // height: calc(100% - 50px);
+            margin-top: initial;
+            @include desktop{
+                display: none;
+            }
+        }
+        // @include display_flex;
+        // flex-direction: column;
+        @include loadInOutAnimation;
         .topfix{
-            position: absolute;
+            position: fixed;
             top: -2px;
-            height: 4px;
+            height: 52px;
             background-color: $color-hackgsu-blue;
             left: 0;
             width: $full;
+            z-index: 0;
         }
-        overflow: visible;
-        background-color: $color-hackgsu-blue;
-        // @include flex(3,1,0);
-        // position: absolute;
-        width: $full;
-        // height: 30%;
-        @include display_flex;
-        color: white;
-        @include card2;
-        position: fixed;
-        height: 30%;
-        @include transition(height, .8s, 1s);
-        z-index: 1;
-        @include notMobile{
-            margin-top: 50px;
-        }
-
-        .container{
-            @include flex(1,1,0);
-            padding: 2rem;
-            @include flexBetween(true);
-            align-items: flex-start;
-
-            .otherDays{
-                @include display_flex;
-                // margin-bottom: 4rem;
-                .day:first-child{
-                    margin-right: 2rem;
-                }
-                .day{
-                    font-size: 2rem;
-                    text-transform: capitalize;
-                }
+        .dayController{
+            
+            overflow: visible;
+            background-color: $color-hackgsu-blue;
+            // @include flex(3,1,0);
+            // position: absolute;
+            width: $full;
+            // height: 30%;
+            @include display_flex;
+            color: white;
+            @include card2;
+            position: fixed;
+            height: 30%;
+            @include transition(all, .8s, 1s);
+            z-index: 1;
+            @include notMobile{
+                margin-top: 50px;
+                height: 25%;
+                min-height: fit-content;
             }
-            .currentDay{
-                @include display_flex;
-                flex-direction: column;
-                *{
-                    font-size: 10vw;
-                    font-weight: 700;
-                    @include notMobile{
-                        font-size: 5rem;
+
+            .container{
+                @include flex(1,1,0);
+                padding: 2rem;
+                @include flexBetween(true);
+                align-items: flex-start;
+
+                .otherDays{
+                    @include display_flex;
+                    // margin-bottom: 4rem;
+                    .day:first-child{
+                        margin-right: 2rem;
+                    }
+                    .day{
+                        @include noDecoration;
+                        @include notSelectable;
+                        color: white;
+                        cursor: pointer;
+                        font-size: 2rem;
+                        text-transform: capitalize;
                     }
                 }
-                .date{
-                    opacity: 0.6;
-                }
-                .day{
-                    text-transform: capitalize;
-                }
-            }
-        }
-    }
-    .events{
-        // @include flex(7,1,0);
-        position: absolute;
-        top: 30%;
-        @include notMobile{
-            top: calc(30% + 50px);
-        }
-        padding: 2rem;
-        padding-bottom: 12rem;
-        @include notMobile{
-            padding: 2rem 20vw;
-        }
-        // padding-top: 30%;
-        width: $full;
-        // min-height: fit-content;
-        // @include display_flex;
-        .event{
-            // margin: 1rem;
-            background-color: white;
-            // height: 100px;
-            // @include card2;
-            margin-bottom: 1rem;
-
-            @include display_flex;
-            padding: 2rem;
-
-            .info{
-                @include flex(2,1,0);
-                // @include flexBetween(true);
-                @include display_flex;
-                flex-direction: column;
-                .mainInfo{
+                .currentDay{
                     @include display_flex;
                     flex-direction: column;
-                    .title{
-                        font-size: 1.8rem;
+                    *{
+                        font-size: 5rem;
                         font-weight: 700;
                         @include notMobile{
-                            font-size: 3rem;
+                            font-size: 5rem;
                         }
                     }
-                    .location{
-                        color: $color-hackgsu-blue;
-                        // font-weight: 300;
-                        font-size: 1.2rem;
+                    .date{
+                        opacity: 0.6;
+                    }
+                    .day{
+                        text-transform: capitalize;
+                    }
+                }
+            }
+        }
+        .events{
+            // @include flex(7,1,0);
+            background-color: $color-grey;
+            position: absolute;
+            top: 30%;
+            @include notMobile{
+                top: calc(25% + 50px);
+            }
+            padding: 2rem;
+            padding-bottom: 12rem;
+            @include notMobile{
+                padding: 2rem 20vw;
+            }
+            // padding-top: 30%;
+            width: $full;
+            // min-height: fit-content;
+            // @include display_flex;
+            .event{
+                // margin: 1rem;
+                background-color: white;
+                // height: 100px;
+                // @include card2;
+                margin-bottom: 1rem;
+
+                @include display_flex;
+                padding: 2rem;
+
+                .info{
+                    @include flex(2,1,0);
+                    // @include flexBetween(true);
+                    @include display_flex;
+                    flex-direction: column;
+                    .mainInfo{
+                        @include display_flex;
+                        flex-direction: column;
+                        .title{
+                            font-size: 1.8rem;
+                            font-weight: 700;
+                            @include notMobile{
+                                font-size: 3rem;
+                            }
+                        }
+                        .location{
+                            color: $color-hackgsu-blue;
+                            // font-weight: 300;
+                            font-size: 1.2rem;
+                            @include notMobile{
+                                font-size: 2rem;
+                            }
+                        }
+                    }
+                    .description{
+                        margin-top: 1rem;
                         @include notMobile{
                             font-size: 2rem;
                         }
                     }
                 }
-                .description{
-                    margin-top: 1rem;
-                    @include notMobile{
-                        font-size: 2rem;
-                    }
-                }
-            }
-            .time{
-                @include flex(1,1,0);
-                @include display_flex;
-                // flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                color: $color-hackgsu-blue;
-                .hour{
-                    font-size: 5rem;
-                    font-weight: 700;
-                }
-                .smallTime{
+                .time{
+                    @include flex(1,1,0);
                     @include display_flex;
-                    flex-direction: column;
-                    text-transform: uppercase;
-                    margin-left: 0.2rem;
-                    *{
-                        font-size: 2rem;
-                        line-height: 2rem;
-                        height: 2rem;
+                    // flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    color: $color-hackgsu-blue;
+                    .hour{
+                        font-size: 5rem;
+                        font-weight: 700;
                     }
-                    .period{
-                        align-self: flex-end;
+                    .smallTime{
+                        @include display_flex;
+                        flex-direction: column;
+                        text-transform: uppercase;
+                        margin-left: 0.2rem;
+                        *{
+                            font-size: 2rem;
+                            line-height: 2rem;
+                            height: 2rem;
+                        }
+                        .period{
+                            align-self: flex-end;
+                        }
                     }
+                    // background-color: $color-grey;
                 }
-                // background-color: $color-grey;
             }
         }
+    }
+
+    #desktopSchedule{
+        display: none;
+        @include desktop{
+            @include display_flex;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: $full;
+            width: $full;
+            background-color: $color-hackgsu-blue;
+        }
+
+        .allEvents{
+            @include flexAround(false);
+            padding: calc(50px + 2rem) 2rem 2rem;
+            *{
+                @include noDecoration;
+                // color: white;
+            }
+            
+            .day{
+                padding: 1rem;
+                @include display_flex;
+                @include flex(1,1,0);
+                height: $full;
+                justify-content: center;
+
+                .dayController{
+                    @include flexCenter;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    padding: 1rem;
+                    // @include card2;
+                    margin-bottom: 1rem;
+                    background-color: $color-hackgsu-blue;
+                    border-radius: 0.4rem;
+                    .date,.dayOfEvent{
+                        text-align: center;
+                        font-size: 3rem;
+                        font-weight: 300;
+                        font-weight: 700;
+                        color: $color-text-grey;
+                        color: white;
+                        
+                    }
+                    .date{
+                        // margin-bottom: 1rem;
+                    }
+    
+                }
+                
+                .events{
+                    @include display_flex;
+                    flex-direction: column;
+                    background-color: $color-grey;
+                    @include flex(1,1,0);
+                    padding: 1rem;
+                    // @include card2;
+                    border-radius: 0.4rem;
+                    .event{
+                        @include display_flex;
+                        @include flex(1,1,0);
+                        background-color: white;
+                        // @include card;
+                        margin: 0.2rem;
+                        padding: 0.5rem;
+                        &.hasDescription{
+                            @include card;
+                            cursor: pointer;
+                        }
+                        .evenItem{
+                            @include flex(1,1,0);
+                            justify-content: center;
+                            @include display_flex;
+                            align-items: center;
+                            font-size: 1.2rem;
+                        }
+                        .location{
+                            text-align: right;
+                        }
+                        .title{
+                            @include flex(2,1,0);
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+        }
+
+        
     }
 }

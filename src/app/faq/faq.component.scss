@@ -7,128 +7,130 @@ app-faq{
     height: $full;
     overflow: auto;
     background-color: $color-black;
-}
-
-.container{
-    height: $full;
-}
-
-.head{
-    *{
-        @include noDecoration;
-        @include notSelectable;
+    .container{
+        height: $full;
+        @include loadInOutAnimation;
     }
-    @include flexCenter;
-    .pageHeader{
-        margin-top: 1rem;
-        padding: 1rem;
-        font-weight: 700;
-        font-size: calc(1rem + 1.5vw);
-        @include notMobile{
-            margin-top: 2rem;
-            padding: 2rem;
-            font-size: 3rem;
+    
+    .head{
+        *{
+            @include noDecoration;
+            @include notSelectable;
         }
-    }
-}
-
-.faqList{
-    // background-color: $color-black;
-    padding: 1rem;
-    margin-bottom: 50px;
-    @include notMobile{
-        margin-bottom: initial;
-    }
-    min-height: max-content;
-    @include display_flex;
-    flex-direction: column;
-    @include notMobile{
-        padding: 2rem 2rem 1rem 2rem;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        // flex-basis: 50%;
-        .faqItem{
-            max-width: calc(50% - 1rem);
-            min-width: calc(50% - 1rem);
-            @include desktop{
-                max-width: calc(33% - 1rem);
-                min-width: calc(33% - 1rem);
-            }
-            @include flex(1,1,0);
-            margin-bottom: 1rem;
-            margin-top: 1rem;
-            // max-height: fit-content;
-            // align-items: flex-end;
-            // max-width: 50%;
-            // max-width: 50%;
-        }
-    }
-    .faqItem:not(:last-child){
-        margin-bottom: 1rem;
-    }
-    .faqItem{
-        border-radius: 2px;
-        // border-top-right-radius: 5px;
-        // border-top-left-radius: 5px;
-        background-color: white;
-        
+        @include flexCenter;
         min-height: fit-content;
-        
-
-        .question{
-            @include flexCenter;
-            width: $full;
-            *{
-                @include noDecoration;
-                @include notSelectable;
-            }
-
-           .text{
-                margin: 1rem;
-                font-size: 2rem;
-                font-weight: 300;
-                display: block;
+        .pageHeader{
+            margin-top: 1rem;
+            padding: 1rem;
+            font-weight: 700;
+            font-size: calc(1rem + 1.5vw);
+            @include notMobile{
+                margin-top: 2rem;
                 padding: 2rem;
-                text-align: center;
-           } 
-            // margin-bottom: 1rem;
+                font-size: 3rem;
+            }
         }
-        .question, .response{
+    }
+    
+    .faqList{
+        // background-color: $color-black;
+        padding: 1rem;
+        margin-bottom: 50px;
+        @include notMobile{
+            margin-bottom: initial;
+        }
+        min-height: max-content;
+        @include display_flex;
+        flex-direction: column;
+        @include notMobile{
+            padding: 2rem 2rem 1rem 2rem;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            // flex-basis: 50%;
+            .faqItem{
+                max-width: calc(50% - 1rem);
+                min-width: calc(50% - 1rem);
+                @include desktop{
+                    max-width: calc(33% - 1rem);
+                    min-width: calc(33% - 1rem);
+                }
+                @include flex(1,1,0);
+                margin-bottom: 1rem;
+                margin-top: 1rem;
+                // max-height: fit-content;
+                // align-items: flex-end;
+                // max-width: 50%;
+                // max-width: 50%;
+            }
+        }
+        .faqItem:not(:last-child){
+            margin-bottom: 1rem;
+        }
+        .faqItem{
+            border-radius: 2px;
+            // border-top-right-radius: 5px;
+            // border-top-left-radius: 5px;
+            background-color: white;
             
-            display: inline-block;
-        }
-        .divider{
-            // margin: 1rem 0;
-        }
-        .response{
-            @include flexCenter;
-            width: $full;
-            .text{
-                margin: 1rem;
-                padding: 1rem;
-                font-size: 1.5rem;
-                line-height: 2.5rem;
-                iframe{
-                    width: $full;
+            min-height: fit-content;
+            
+    
+            .question{
+                @include flexCenter;
+                width: $full;
+                *{
                     @include noDecoration;
                     @include notSelectable;
-                    // padding-bottom: $full;
-                    // height: 0px;
-                    // min-height: max-content;
                 }
-                a{
-                    @include noDecoration;
-                    color: $color-hackgsu-blue;
-                    cursor: pointer;
-                }
+    
+               .text{
+                    margin: 1rem;
+                    font-size: 2rem;
+                    font-weight: 300;
+                    display: block;
+                    padding: 2rem;
+                    text-align: center;
+               } 
+                // margin-bottom: 1rem;
             }
-            
+            .question, .response{
+                
+                display: inline-block;
+            }
+            .divider{
+                // margin: 1rem 0;
+            }
+            .response{
+                @include flexCenter;
+                width: $full;
+                .text{
+                    margin: 1rem;
+                    padding: 1rem;
+                    font-size: 1.5rem;
+                    line-height: 2.5rem;
+                    iframe{
+                        width: $full;
+                        @include noDecoration;
+                        @include notSelectable;
+                        // padding-bottom: $full;
+                        // height: 0px;
+                        // min-height: max-content;
+                    }
+                    a{
+                        @include noDecoration;
+                        color: $color-hackgsu-blue;
+                        cursor: pointer;
+                    }
+                }
+                
+            }
         }
+    }
+    
+    .divider{
+        height: 1px;
+        background-color: $color-black;
     }
 }
 
-.divider{
-    height: 1px;
-    background-color: $color-black;
-}

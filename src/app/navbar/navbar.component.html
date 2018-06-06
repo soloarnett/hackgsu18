@@ -1,5 +1,5 @@
 <section id="navbar" [class]="open ? 'open' : 'closed'">
-  <div class="menuButton" (click)="toggleMenuState()">
+  <div class="menuButton" (click)="toggleMenuState(null)">
     <i class="material-icons" *ngIf="!open">menu</i>
     <i class="material-icons" *ngIf="open">close</i>
   </div>
@@ -8,23 +8,35 @@
   </div>
 </section>
 <section id="navbarSpacer"></section>
-<section id="menu" [class]="open ? 'open' : 'closed'" >
-  <a class="menuLink" routerLink="/" routerLinkActive="active" href="">
+<section id="menu" [class]="open ? 'open' : 'closed'">
+  <div class="menuLink" (click)="toggleMenuState('/')">
     <div class="menuItem">
-        <i class="material-icons">home</i>
-        <span>Home</span>
-      </div>
-  </a>
-  <a class="menuLink" routerLink="/schedule" routerLinkActive="active" href="">
+      <i class="material-icons">home</i>
+      <span>Home</span>
+    </div>
+  </div>
+  <!-- <div class="menuLink" (click)="toggleMenuState('/schedule')">
     <div class="menuItem">
-        <i class="material-icons">event</i>
-        <span>Schedule</span>
-      </div>
-  </a>
-  <a class="menuLink" routerLink="/faq" routerLinkActive="active" href="">
+      <i class="material-icons">event</i>
+      <span>Schedule</span>
+    </div>
+  </div> -->
+  <!-- <div class="menuLink" (click)="toggleMenuState('/support')">
     <div class="menuItem">
-        <i class="material-icons">help</i>
-        <span>FAQ</span>
-      </div>
-  </a>
+      <i class="material-icons">group</i>
+      <span>Support</span>
+    </div>
+  </div> -->
+  <!-- <div class="menuLink" (click)="toggleMenuState('/sponsors')">
+    <div class="menuItem">
+      <i class="material-icons sponsors">favorite</i>
+      <span>Sponsors</span>
+    </div>
+  </div> -->
+  <div class="menuLink" (click)="toggleMenuState('/faq')">
+    <div class="menuItem">
+      <i class="material-icons">help</i>
+      <span>FAQ</span>
+    </div>
+  </div>
 </section>

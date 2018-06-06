@@ -1,0 +1,71 @@
+<div class="backButton" (click)="close()">
+  <i class="material-icons">close</i>
+</div>
+<div class="container">
+  <app-alert-window [class]="(alertActive ? 'active' : 'inactive') + ' ' + (alertVisible ? 'visible' : 'invisible')"></app-alert-window>
+  <div class="title">
+    <span>Developers</span>
+  </div>
+  <div class="developers">
+    <div class="developerList">
+      <div class="developer" *ngFor="let developer of developers">
+        <div class="image">
+          <div class="imageContainer">
+            <img [src]="developer.image" alt="">
+          </div>
+        </div>
+        <div class="info">
+          <div class="name">
+            <span>{{developer.name}}</span>
+          </div>
+          <div class="position">
+            <span>{{developer.position}}</span>
+          </div>
+          <div class="company">
+              <span>{{developer.company}}</span>
+          </div>
+          <div class="relatedLinks">
+            <div class="relatedLink" *ngFor="let link of developer.relatedLinks" (click)="navigateExternal(link.link)">
+              <img [src]="link.icon" alt="">
+              <!-- <span>{{link.label}}</span> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="interview">
+      <div class="header">
+        <div class="head">
+          <img [src]="vetek" alt="Vetek">
+          <span>Intern at Vetek</span>
+        </div>
+        <span class="description">We'll be holding interviews, Saturday October 6, 2018 at here at HackGSU. Details will be emailed to only those that fill out the form below. Come talk to us at our booth or visit <a href="http://vetekconsulting.com" target="_blank">http://vetekconsulting.com</a> to learn more.</span>
+      </div>
+      <div class="body">
+        <div class="input">
+          <span class="label">Name</span>
+          <input type="text" [(ngModel)]="interview.name">
+        </div>
+        <div class="input">
+          <span class="label">Email</span>
+          <input type="text" [(ngModel)]="interview.email">
+        </div>
+        <div class="input">
+          <span class="label">Link</span>
+          <input type="text" placeholder="Impress Us: (ex. http://link)" [(ngModel)]="interview.link">
+        </div>
+        <div class="yesNo">
+          <span class="label">Are you allergic to dogs?</span>
+          <div class="options">
+            <div class="option yes" (click)="getAnInterview(true)">
+              <span>Yes</span>
+            </div>
+            <div class="option no" (click)="getAnInterview(true)">
+              <span>No</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

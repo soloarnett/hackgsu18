@@ -10,7 +10,7 @@ import * as $ from 'jquery';
 export class FaqComponent implements OnInit {
   faq:object;
   getFaq(){
-    let url = "http://hackgsu.com/api/faq"
+    let url = "https://aeb4oc6uwg.execute-api.us-east-1.amazonaws.com/prod/getfaq"
     return $.ajax({
       url: url,
       beforeSend:(xhr)=>{
@@ -18,22 +18,44 @@ export class FaqComponent implements OnInit {
       },
       method: "GET",
     }).done((data)=>{
-      // console.log(data);
-      // let response:object = data;
-      this.faq = JSON.parse(data);
-      // console.log(typeof(result));
-      
-      // this.faq.forEach(element => {
-      //   console.log(element);
-      // });
-      // console.log(typeof(data));
+      console.log(data)
+      this.faq = data.body
     })
+  }
+  loaded:boolean = false;
+  pageLoading:boolean = false;
+
+  toggleLoad(){
+    this.loaded = this.loaded ? false : true
+    console.log('load toggled')
+  }
+
+  loadInOutAnimation(){
+    return (this.loaded ? 'active' : 'inactive') + ' ' + (this.pageLoading ? 'loading' : 'notLoading')
+  }
+
+  startLoad(){
+    this.pageLoading = true
+    setTimeout(()=>{
+      this.loaded = true
+    }, 50)
+    
+    setTimeout(()=>{
+      this.stopLoad()
+    }, 450)
+  }
+
+  stopLoad(){
+    this.pageLoading = false
   }
 
   constructor() { }
 
   ngOnInit() {
-    this.getFaq()
+    this.getFaq().then(()=>{
+      this.startLoad()
+    })
+    
   }
 
 }

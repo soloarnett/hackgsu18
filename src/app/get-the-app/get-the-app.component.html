@@ -1,0 +1,22 @@
+<div [class]="'container ' + (closed ? 'closed' : 'open')">
+  <div class="top">
+    <div class="label">
+      <span>Get the HackGSU Mobile App</span>
+    </div>
+    <div class="close" (click)="closeDownloadButton()">
+      <i class="material-icons">close</i>
+      <!-- <span>Close</span> -->
+    </div>
+  </div>
+  <div class="bottom">
+    <div class="download" (click)="downloadLink()" *ngIf="!showManual">
+      <span>Download</span>
+    </div>
+    <div class="download android" (click)="downloadAndroid()" *ngIf="showManual">
+      <span>Android</span>
+    </div>
+    <div class="download" (click)="downloadIos()" *ngIf="showManual">
+      <span>iOS</span>
+    </div>
+  </div>
+</div>

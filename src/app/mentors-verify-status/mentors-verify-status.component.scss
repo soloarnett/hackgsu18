@@ -1,0 +1,10 @@
+@import './src/assets/styles/main';
+
+:host, app-mentors-verify-status{
+    @include display_flex;
+    @include flexCenter;
+
+    .container{
+        @include flexCenter;
+    }
+}

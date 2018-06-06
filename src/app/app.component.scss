@@ -1,0 +1,7 @@
+@import './src/assets/styles/main';
+#app{
+    position: absolute;
+    // right: 0;
+    top: 20px;
+    @include absoluteMiddle;
+}

@@ -1,0 +1,93 @@
+@import './src/assets/styles/main';
+
+body,html{
+    height: $full;
+}
+// :host /deep/{
+    // height: 100vh;
+    // background-color: black;
+    // body{
+        // background-color: black;
+    // }
+// }
+:host, app-sponsors{
+    background-color: $color-hackgsu;
+    // @include display_flex;
+    // height: 100vh;
+    height: $full;
+    .container{
+        @include flex(1,1,0);
+        height: $full;
+        background-color: $color-hackgsu;
+        @include flexCenter;
+        padding: 2rem;
+        padding-top: 0;
+        @include notMobile{
+            padding-top: calc(2rem + 50px);
+            // height: calc(100% - 50px);
+            flex-direction: row;
+        }
+        @include loadInOutAnimation;
+        .image{
+            @include flexCenter;
+            @include flex(1,1,0);
+            height: $full;
+            width: $full;
+            position: relative;
+            img{
+                height: $full;
+                width: $full;
+                object-fit: contain;
+            }
+
+            a{
+                @include noDecoration;
+                cursor: pointer;
+                @include display_flex;
+                position: absolute;
+                &#vetekLink{
+                    width: 16vw;
+                    height: 14vw;
+                    @include notMobile{
+                        height: 8vw;
+                        width: 9vw;
+                        left: 41%;
+                    }
+                    top: 52%;
+                    left: 41%;
+                }
+                &#rocketLink{
+                    width: 18vw;
+                    height: 10vw;
+                    right: 1%;
+                    top: 48%;
+                    @include notMobile{
+                        height: 4vw;
+                        width: 9vw;
+                        right: 7%;
+                    }
+                }
+            }
+        }
+        .title{
+            display: none;
+            @include notMobile{
+                // background-color: $color-grey;
+                // @include insetCard;
+                display: initial;
+                @include flex(1,1,0);
+                @include flexCenter;
+                color: white;
+                font-size: 6rem;
+                height: $full;
+                span{
+                    text-align: center;
+                }
+                i{
+                    font-size: 8rem;
+                    color: $color-red;
+                }
+            }
+        }
+    }
+}

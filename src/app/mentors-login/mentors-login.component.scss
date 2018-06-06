@@ -1,0 +1,345 @@
+@import './src/assets/styles/main';
+body,html{
+    height: $full;
+}
+:host, app-mentors-login{
+    background-color: white;
+    height: $full;
+    .container{
+        // @include flexCenter;
+        @include loadInOutAnimation;
+        app-navbar{
+            display: none;
+            @include notMobile{
+                display: initial;
+            }
+        }
+        background-color:$color-grey;
+        &.statusAvailable{
+            background-color: white;
+        }
+        @include display_flex;
+        flex-direction: column;
+        align-items: center;
+        height: $full;
+        margin: auto 0;
+        @include notMobile{
+            background-color: white;
+        }
+        h1{
+            text-align: center;
+            padding: 0 10vw;
+            color: $color-text-grey;
+        }
+        .prevent{
+            font-size: 20vw;
+            color: $color-hackgsu-blue;
+            margin-top: 20vh;
+        }
+
+        .titleWindow{
+            width: $full;
+            @include noDecoration;
+            @include notSelectable;
+            background-color: white;
+            *{
+                @include noDecoration;
+                @include notSelectable;
+            }
+            height: 20rem;
+            @include notMobile{
+                // height: initial;
+                // padding-top: 20vw;
+                background-color: initial;
+
+                margin-top: 10rem;
+                padding-bottom: 5vw;
+                @include desktop{
+                    padding-top: 5vw;
+                    margin-top: initial;
+                    // @include flex(1,1,0);
+                    width: $full;
+                }
+            }
+            @include flexCenter;
+            .content{
+                @include flexCenter;
+                @include notMobile{
+                    height: $full;
+                }
+                img{
+                    @include noDecoration;
+                    @include notSelectable;
+                    height: $full;
+                    object-fit: contain;
+                }
+                
+                i{
+                    font-size: 6rem;
+                    @include desktop{
+                        font-size: 6rem;
+                    }
+                    color: $color-hackgsu-blue;
+                }
+                .separator{
+                    margin-top: 1rem;
+                    width: 50vw;
+                    height: 2px;
+                    min-height: 2px;
+                    background-color: $color-hackgsu-blue;
+                    @include notMobile{
+                        width: 20vw;
+                    }
+                }
+                span{
+                    margin-top: 1rem;
+                    font-weight: 700;
+                    font-size: 2rem;
+                    color: $color-text-grey;
+                }
+            }
+        }
+
+        .login{
+            // background-color: rgb(212, 73, 73);
+            border-top: 2px solid $color-black;
+            @include display_flex;
+            flex-direction: column;
+            width: $full;
+            padding: 2rem;
+            @include notMobile{
+                padding: 2rem 10vw;
+                border-top: none;
+                @include desktop{
+                    padding: 2rem 30vw;
+                }
+            }
+            .item{
+                // @include flexAround(true);
+                @include display_flex;
+                flex-direction: column;
+                .label{
+                    margin-bottom: 1rem;
+                    @include labelStyle;
+                }
+                input{
+                    @include noDecoration;
+                    margin: 0;
+                    border: 0;
+                    padding: 1.5rem;
+                    font-size: 2rem;
+                    @include transition(all, .4s, 0s);
+                    // @include insetCard;
+                    border: 2px solid white;
+                    border-color: $color-black;
+                    @include notMobile{
+                        border-color: $color-black;
+                    }
+                    border-radius: 0.2rem;
+                    overflow: hidden;
+                    
+                    // border-bottom: 1px solid white;
+                    &.prefill{
+                        background-color: $color-grey;
+                        color: $color-text-grey;
+                    }
+                }
+                input:focus{
+                    border-color: $color-hackgsu-blue;
+                    // @include card2_noTrans;
+                    // border-color: $color-hackgsu-blue;
+                    @include transition(all, .4s, 0s);
+
+                }
+            }
+
+            
+
+            .item:not(:last-child){
+                margin-bottom: 2rem;
+            }
+            // padding: 1rem;
+            // margin: 1rem;
+            // @include insetCard;
+        }
+        .request{
+
+            width: $full;
+            @include display_flex;
+            flex-direction: column;
+            padding: 0rem 2rem;
+
+            @include desktop{
+                padding: 0rem 30vw;
+            }
+
+            .head{
+                @include noDecoration;
+                @include notSelectable;
+                font-weight: 700;
+                text-transform: uppercase;
+                color: $color-text-grey;
+                font-size: 1rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .requestContainer{
+                @include display_flex;
+                // border: 1px solid $color-black;
+                border-radius: 0.2rem;
+                overflow: hidden;
+                flex-direction: column;
+                @include card2_noTrans;
+                .name{
+                    @include noDecoration;
+                    @include notSelectable;
+                    background-color: $color-grey;
+                    padding: 1rem;
+                    text-align: center;
+                }
+
+                .item, .item > .current, .item > .nearest{
+                    @include display_flex;
+                    flex-direction: column;
+                    @include flexCenter;
+                }
+
+                .item{
+                    margin: 2rem;
+                    span{
+                        @include noDecoration;
+                        @include notSelectable;
+                        font-size: 1rem;
+                        font-weight: 700;
+                        color: $color-text-grey;
+                        text-transform: uppercase;
+                        @include notMobile{
+                            font-size: 1.5rem;
+                        }
+                    }
+                    .data{
+                        color: $color-hackgsu-blue;
+                        font-size: 1.5rem;
+                        text-align: center;
+                        @include notMobile{
+                            font-size: 3rem;
+                        }
+                    }
+
+                    &.status{
+                        .data{
+                            font-size: 2rem;
+                            @include notMobile{
+                                font-size: 4rem;
+                            }
+                        }
+                    }
+                }
+
+                .row{
+                    @include display_flex;
+                    justify-content: space-around;
+                }
+
+                .statusArea{
+                    justify-content: center;
+                }
+
+                .options{
+                    @include display_flex;
+                    justify-content: space-between;
+                    padding: 1rem;
+                    border-top: 1px solid $color-black;
+                    color: $color-text-grey;
+
+                    .option{
+                        @include noDecoration;
+                        cursor: pointer;
+                        span{
+                            @include noDecoration;
+                            @include notSelectable;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+
+        .submitLogin{
+            width: $full;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            // background-color: white;
+            @include display_flex;
+            // @include reverseCard_noTrans;
+            background-color: $color-black;
+            // justify-content: space-around;
+            .button{
+                @include flex(1,1,0);
+                @include display_flex;
+                background-color: $color-hackgsu-blue;
+                &.home{
+                    background-color: $color-black;
+                    span{
+                        color: $color-text-grey;
+                    }
+                }
+                span{ 
+                    text-align: center;
+                    width: $full;
+                    padding: 2rem;
+                    padding-bottom: 3rem;
+                    @include notMobile{
+                        padding-bottom: 2rem;
+                    }
+                    font-weight: 700;
+                    font-size: 2rem;
+                    color: white;
+                    text-transform: uppercase;
+                    @include quickTransition(color);
+                }
+                @include notMobile{
+                    @include transition(background-color, .4s, 0s);
+                    &:hover{
+                        background-color: lighten($color-hackgsu-blue, 10%);
+                        
+                        &.home{
+                            background-color: lighten($color-black, 10%);
+                        }
+                        cursor: pointer;
+                        *{
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+
+            @include desktop{
+                position: initial;
+                width: auto;
+                background-color: white;
+                .button{
+                    span{
+                        @include transition(opacity, .4s, 0s);
+                    }
+                }
+                
+                &:hover{
+                    background-color: white;
+                    span{
+                        opacity: 0;
+                        // color: $color-hackgsu-blue;
+                    }
+                    .button:hover{
+                        span{
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+            
+            
+        }
+    }
+}

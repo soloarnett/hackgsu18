@@ -1,0 +1,116 @@
+@import './src/assets/styles/main';
+
+
+// body,html{
+//     background-color: white;
+// }
+body,html{
+    height: $full;
+}
+:host, app-mentors{
+    height: $full;
+    overflow: visible;
+    background-color: white;
+    @include display_flex;
+
+    .container{
+        @include display_flex;
+        @include flex(1,1,0);
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+        @include loadInOutAnimation;
+        .titleWindow{
+            height: 60vw;
+            @include notMobile{
+                height: initial;
+                padding-top: 20vw;
+                padding-bottom: 5vw;
+                @include desktop{
+                    padding-top: 2rem;
+                }
+            }
+            @include flexCenter;
+            .content{
+                @include flexCenter;
+                i{
+                    font-size: 20vw;
+                    color: $color-hackgsu-blue;
+                }
+                .separator{
+                    width: 50vw;
+                    height: 0.5vw;
+                    background-color: $color-hackgsu-blue;
+                }
+                span{
+                    margin-top: 1rem;
+                    font-weight: 700;
+                    font-size: 7vw;
+                    color: $color-text-grey;
+                }
+            }
+        }
+        .links{
+            @include flexCenter;
+            @include notMobile{
+                flex-direction: row;
+            }
+            .link{
+                @include transition(background-color, .4s, 0s);
+                color: $color-hackgsu-blue;
+                width: 80vw;
+                @include notMobile{
+                    width: initial;
+                }
+                padding: 1.5rem 0rem;
+                border-radius: 0.4rem;
+                border: 0.2rem solid $color-hackgsu-blue;
+                margin-bottom: 2rem;
+                text-align: center;
+                font-size: 5vw;
+                @include notMobile{
+                    font-size: 1.4vw;
+                    padding: 1rem 2rem;
+                }
+    
+                span{
+                    @include noDecoration;
+                    @include notSelectable;
+                    @include transition(color, .4s, 0s);
+                }
+            }
+
+            .link:not(:last-child){
+                @include notMobile{
+                    margin-right: 1rem;
+                }
+            }
+    
+            .link:first-child{
+                // background-color: rgba($color-hackgsu-blue, 0.1);
+                span{
+                    // color: white;
+                }
+            }
+    
+            .link:focus, .link:active{
+                background-color: $color-hackgsu-blue;
+                span{
+                    color: white;
+                }
+            }
+            .link:hover{
+                @include notMobile{
+                    background-color: $color-hackgsu-blue;
+                    cursor: pointer;
+                    span{
+                        color: white;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}
+
+

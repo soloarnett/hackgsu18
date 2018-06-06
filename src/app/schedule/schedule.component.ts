@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http/src/headers';
 import { HttpRequest } from 'selenium-webdriver/http';
+import { AlertWindowService } from '../alert-window.service';
 
 @Component({
   selector: 'app-schedule',
@@ -13,15 +14,29 @@ export class ScheduleComponent implements OnInit {
   currentDay:string = ""
   otherDays:Array<string> = []
   currentDate:string = ""
-  events//:Array<Object>
+  events
   eventsByDay
   otherEvents
 
+  alertActive:boolean = true
+  alertVisible:boolean = true
   
-  constructor(private http:HttpClient
-  ) { }
+  constructor(private http:HttpClient, private alertwindowservice:AlertWindowService) {
+    alertwindowservice.alertActiveState$.subscribe(
+      (alertActiveState:boolean) =>{
+        this.alertActive = alertActiveState
+      }
+    )
+
+    alertwindowservice.alertVisibleState$.subscribe(
+      (alertVisibleState:boolean) =>{
+        this.alertVisible = alertVisibleState
+      }
+    )
+  }
 
   getEvents(byDay){
+    this.alertwindowservice.showDataWithoutButton('Just a moment...<br><br>Gathering all events')
     let url = "https://aeb4oc6uwg.execute-api.us-east-1.amazonaws.com/prod/getevents"
     let request = this.http.request("POST",url, {
       body: {
@@ -32,22 +47,67 @@ export class ScheduleComponent implements OnInit {
       }
     }).subscribe(
       res => {
-        // this.result = res
-        // console.log(this.result)
         this.events = res 
+        console.log(this.events)
+        this.events.forEach(day => {
+          console.log(day)
+          day.events.forEach(event => {
+            switch(event.title.toLowerCase()){
+              case 'lunch':
+              case 'dinner':
+              case 'snack':
+              case 'breakfast':
+              let theseEvents = this.events
+              let thisDay = theseEvents[theseEvents.indexOf(day)]
+              let thisEvent = thisDay.events[thisDay.events.indexOf(event)]
+              thisEvent.description = null;
+              // console.log(thisDay)
+                // console.log(this.events[this.events.indexOf(day)].events.indexOf(event))
+              break
+              // this.events[day].events[event].description = null
+            }
+          });
+        });
         this.getDay("friday")
-        // this.getDay("FRIday")
-        // console.log(this.events)
-        // console.log(res.toString())
-        // console.log
-        // console.log(typeof(res));
-        // console.log(res.valueOf())
-        // console.log(res.constructor)
+        this.alertwindowservice.hide()
+        // this.startLoad()
       },
       err => {
         alert('an error occurred')
       }
     );
+  }
+
+  displayEvent(description){
+    if(description){
+      this.alertwindowservice.showDataWithButton(description)
+    }
+  }
+
+  loaded:boolean = false;
+  pageLoading:boolean = false;
+
+  toggleLoad(){
+    this.loaded = this.loaded ? false : true
+  }
+
+  loadInOutAnimation(){
+    return (this.loaded ? 'active' : 'inactive') + ' ' + (this.pageLoading ? 'loading' : 'notLoading')
+  }
+
+  startLoad(){
+    this.pageLoading = true
+    setTimeout(()=>{
+      this.loaded = true
+    }, 50)
+    
+    setTimeout(()=>{
+      this.stopLoad()
+    }, 450)
+  }
+
+  stopLoad(){
+    this.pageLoading = false
   }
 
   getOtherDays(element){
@@ -60,25 +120,45 @@ export class ScheduleComponent implements OnInit {
   }
 
   getDay(day:string){
+    window.scrollTo(0,0)
     this.events.forEach(element => {
       if (element.day.toLowerCase() == day.toLowerCase()){
         this.currentDay = day
         this.currentDate = element.date
-        console.log(element)
         this.otherDays = this.getOtherDays(element)
         this.eventsByDay = element.events
-        // console.log(this.otherEvents)
       }
     });
   }
 
+
+  pickDay(){
+    switch(this.currentDay.toLowerCase()){
+      case 'friday':
+        this.getDay('saturday')
+        break
+      case 'saturday':
+        this.getDay('sunday')
+        break
+      case 'sunday':
+        this.getDay('friday')
+        break
+    }
+  }
+
+  nextDay(){
+    this.alertwindowservice.showDataWithoutButton('')
+    setTimeout(()=>{
+      this.pickDay()
+    }, 400)
+    setTimeout(()=>{
+      this.alertwindowservice.hide()
+    }, 450)
+  }
+
   ngOnInit() {
     this.getEvents(true)
-    // // this.getDay("friday")
-    // this.currentDay = "Friday"
-    // this.otherDays.push("Saturday")
-    // this.otherDays.push("Sunday")
-    // this.currentDate = "03.23"
+    this.startLoad()
   }
 
 }

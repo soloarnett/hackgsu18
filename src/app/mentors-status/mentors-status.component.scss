@@ -1,0 +1,274 @@
+@import './src/assets/styles/main';
+body,html{
+    background-color: white;
+}
+:host, app-mentors-status{
+    // height: 100vh;
+    .container{
+        // @include flexCenter;
+        @include loadInOutAnimation;
+        background-color: white;
+        @include display_flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+        margin: auto 0;
+        h1{
+            text-align: center;
+            padding: 0 10vw;
+            color: $color-text-grey;
+        }
+        .prevent{
+            font-size: 20vw;
+            color: $color-hackgsu-blue;
+            margin-top: 20vh;
+        }
+
+        .titleWindow{
+            @include noDecoration;
+            @include notSelectable;
+            *{
+                @include noDecoration;
+                @include notSelectable;
+            }
+            height: 20rem;
+            @include notMobile{
+                // height: initial;
+                // padding-top: 20vw;
+
+                margin-top: 10rem;
+                padding-bottom: 5vw;
+                @include desktop{
+                    padding-top: 5vw;
+                    margin-top: initial;
+                    // @include flex(1,1,0);
+                    width: $full;
+                }
+            }
+            @include flexCenter;
+            .content{
+                @include flexCenter;
+                @include notMobile{
+                    height: $full;
+                }
+                img{
+                    @include noDecoration;
+                    @include notSelectable;
+                    height: $full;
+                    object-fit: contain;
+                }
+                i{
+                    font-size: 8rem;
+                    @include desktop{
+                        font-size: 6rem;
+                    }
+                    color: $color-hackgsu-blue;
+                }
+                .separator{
+                    width: 50vw;
+                    height: 2px;
+                    min-height: 2px;
+                    background-color: $color-hackgsu-blue;
+                    @include notMobile{
+                        width: 20vw;
+                    }
+                }
+                span{
+                    margin-top: 1rem;
+                    font-weight: 700;
+                    font-size: 2rem;
+                    color: $color-text-grey;
+                }
+            }
+        }
+
+        .request{
+
+            width: $full;
+            @include display_flex;
+            flex-direction: column;
+            padding: 0rem 2rem;
+
+            @include desktop{
+                padding: 0rem 30vw;
+            }
+
+            .head{
+                @include noDecoration;
+                @include notSelectable;
+                font-weight: 700;
+                text-transform: uppercase;
+                color: $color-text-grey;
+                font-size: 1rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .requestContainer{
+                @include display_flex;
+                // border: 1px solid $color-black;
+                border-radius: 0.2rem;
+                overflow: hidden;
+                flex-direction: column;
+                @include card2_noTrans;
+                .name{
+                    @include noDecoration;
+                    @include notSelectable;
+                    background-color: $color-grey;
+                    padding: 1rem;
+                    text-align: center;
+                }
+
+                .item, .item > .current, .item > .nearest{
+                    @include display_flex;
+                    flex-direction: column;
+                    @include flexCenter;
+                }
+
+                .item{
+                    margin: 2rem;
+                    span{
+                        @include noDecoration;
+                        @include notSelectable;
+                        font-size: 1rem;
+                        font-weight: 700;
+                        color: $color-text-grey;
+                        text-transform: uppercase;
+                        @include notMobile{
+                            font-size: 1.5rem;
+                        }
+                    }
+                    .data{
+                        color: $color-hackgsu-blue;
+                        font-size: 1.5rem;
+                        text-align: center;
+                        @include notMobile{
+                            font-size: 3rem;
+                        }
+                    }
+
+                    &.status{
+                        .data{
+                            font-size: 2rem;
+                            @include notMobile{
+                                font-size: 4rem;
+                            }
+                        }
+                    }
+                }
+
+                .row{
+                    @include display_flex;
+                    justify-content: space-around;
+                }
+
+                .statusArea{
+                    justify-content: center;
+                }
+
+                .options{
+                    @include display_flex;
+                    justify-content: space-between;
+                    padding: 1rem;
+                    border-top: 1px solid $color-black;
+                    color: $color-text-grey;
+
+                    .option{
+                        @include noDecoration;
+                        cursor: pointer;
+                        span{
+                            @include noDecoration;
+                            @include notSelectable;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+
+        .email{
+            @include display_flex;
+            flex-direction: column;
+            justify-content: flex-start;
+
+            .label{
+                @include labelStyle;
+                margin-bottom: 0.5rem;
+            }
+            .input{
+                @include display_flex;
+                align-items: center;
+                border-radius: 0.2rem;
+                overflow: hidden;
+                input{
+                    @include noDecoration;
+                    border: 1px solid $color-black;
+                    padding: 0 1rem;
+                    font-size: 2rem;
+                    line-height: 2rem;
+                    vertical-align: middle;
+                    height: 4rem;
+                    border-radius: 0;
+                    margin: 0;
+                    border-right: none;
+                    @include desktop{
+                        font-size: 4rem;
+                        line-height: 4rem;
+                        height: 8rem;
+                    }
+                }
+                .submit{
+                    @include noDecoration;
+                    cursor: pointer;
+                    height: 4rem;
+                    @include desktop{
+                        height: 8rem;
+                    }
+                    padding: 0 1.5rem;
+                    background-color: $color-hackgsu-blue;
+                    i{
+                        @include noDecoration;
+                        @include notSelectable;
+                        cursor: pointer;
+                        line-height: 4rem;
+                        vertical-align: middle;
+                        font-size: 2rem;
+                        color: white;
+                        @include desktop{
+                            font-size: 4rem;
+                            line-height: 8rem;
+                        }
+                    }
+                }
+            }
+        }
+
+        .wrongRequest{
+            @include noDecoration;
+            @include display_flex;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: $full;
+            // border-top: 1px solid $color-black;
+            justify-content: flex-start;
+            align-items: flex-start;
+            cursor: pointer;
+            color: $color-text-grey;
+            span{
+                @include noDecoration;
+                @include notSelectable;
+                padding: 2rem;
+                text-align: left;
+                cursor: pointer;
+            }
+
+            @include notMobile{
+                position: initial;
+                bottom: initial;
+                top: initial;
+                justify-content: initial;
+                width: initial;
+            }
+        }
+    }
+}

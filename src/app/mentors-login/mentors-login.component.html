@@ -1,0 +1,89 @@
+<div class="container" [class]="'container ' + loadInOutAnimation() + (statusAvailable ? ' statusAvailable' : '')">
+  <app-navbar></app-navbar>
+  <app-alert-window [class]="(alertActive ? 'active' : 'inactive') + ' ' + (alertVisible ? 'visible' : 'invisible')"></app-alert-window>
+
+  <div class="titleWindow">
+    <div class="content">
+      <div class="icons">
+        <i class="material-icons">face</i>
+        <i class="material-icons">content_paste</i>
+      </div>
+      <div class="separator"></div>
+      <span *ngIf="!loggedIn">Mentor Login</span>
+      <span *ngIf="loggedIn">Mentor</span>
+    </div>
+  </div>
+
+  <div class="login" *ngIf="!loggedIn">
+    <div class="item">
+      <span class="label">Email Address</span>
+      <input (click)="clearPrefill()" [class]="emailPrefill ? 'prefill' : ''" type="email" name="email" [(ngModel)]="email" alt="What email address did you register with?" (keyup.enter)="login()">
+    </div>
+    <div class="item">
+      <span class="label">Pin</span>
+      <input class="" type="password" name="pin" [(ngModel)]="pin" alt="What pin did you create during setup?" (keyup.enter)="login()">
+    </div>
+  </div>
+
+  <div class="submitLogin">
+    <div class="button home" (click)="schedule()" *ngIf="!statusAvailable">
+      <span>Schedule</span>
+    </div>
+    <div class="button home" (click)="logout()" *ngIf="statusAvailable">
+      <span>Logout</span>
+    </div>
+    <div class="button" (click)="login()" *ngIf="!statusAvailable">
+      <span>Login</span>
+    </div>
+    <div class="button" (click)="complete()" *ngIf="statusAvailable">
+      <span>Complete</span>
+    </div>
+  </div>
+  
+
+  <div class="request" *ngIf="statusAvailable">
+    <span class="head">Your Request</span>
+    <div class="requestContainer">
+      <div class="name">
+        <span>{{request.name}}</span>
+      </div>
+
+      <div class="requestInfo">
+        <div class="row">
+          <div class="item room">
+              <div class="current" *ngIf="request.room">
+                <span>Room</span>
+                <span class="data">{{request.room}}</span>
+              </div>
+              <div class="nearest" *ngIf="request.nearest">
+                <span>Near Room</span>
+                <span class="data">{{request.nearest}}</span>
+              </div>
+            </div>
+            
+            <div class="item shirt">
+            <span>Shirt Color</span>
+            <span class="data">{{request.shirtColor}}</span>
+          </div>
+        </div>
+        <div class="row statusArea">
+          <div class="item status">
+            <span>Status</span>
+            <span class="data">{{request.status}}</span>
+          </div>
+        </div>
+        <div class="row options">
+          <div class="option" (click)="cancel()" *ngIf="!cancelHidden">
+            <span>Cancel Request</span>
+          </div>
+          <div class="option" (click)="refresh()">
+            <span>Check Again</span>
+          </div>
+          <div class="option" (click)="defer()" *ngIf="statusAvailable">
+            <span>Defer Request</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

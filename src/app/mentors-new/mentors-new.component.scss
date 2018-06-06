@@ -1,0 +1,395 @@
+@import './src/assets/styles/main';
+
+
+// body,html{
+//     background-color: white;
+// }
+body,html{
+    height: $full;
+    background-color: white;
+    overflow: visible;
+}
+#navbarControl{
+    display: none;
+    @include desktop{
+        display: initial;
+    }
+}
+
+:host, app-mentors-new{
+    // height: $full;
+    overflow: visible;
+    background-color: white;
+    @include display_flex;
+    @include desktop{
+        height: $full;
+        min-height: fit-content;
+    }
+
+    .container{
+        @include display_flex;
+        @include flex(1,1,0);
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+        padding: 0 2rem;
+        margin-bottom: 6rem;
+        @include desktop{
+            margin-bottom: 5%;
+            padding: 0 10vw;
+            min-height: fit-content;
+        }
+
+        @include loadInOutAnimation;
+
+        .agreement{
+            @include flexCenter;
+            padding-bottom: 1rem;
+            span{
+                font-size: 1rem;
+                // text-transform: uppercase;
+                font-weight: 700;
+                color: $color-text-grey;
+                text-align: center;
+            }
+        }
+
+        .howitworks{
+            padding: 2rem;
+            border: 1px solid $color-hackgsu-blue;
+            border-radius: 0.4rem;
+            @include display_flex;
+            flex-direction: column;
+            margin-bottom: 4rem;
+
+            *{
+                @include noDecoration;
+                @include notSelectable;
+                color: $color-text-grey;
+            }
+            .head{
+                margin-bottom: 1rem;
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: $color-hackgsu-blue;
+            }
+            .description{
+
+            }
+        }
+        
+        .submission{
+            position: fixed;
+            @include flexBetween(false);
+            width: $full;
+            bottom: 0;
+            background-color: white;
+            @include reverseCard_noTrans;
+            flex-direction: row-reverse;
+            @include desktop{
+                // @include flexAround(false);
+                flex-direction: row;
+                justify-content: flex-end;
+            }
+            span{
+                @include noDecoration;
+                @include notSelectable;
+                cursor: pointer;
+                font-size: 1.5rem;
+                padding: 2rem;
+                
+                color: $color-hackgsu-blue;
+                @include desktop{
+                    @include quickTransition(background-color);
+                    font-size: 2rem;
+                }
+            }
+            span:hover{
+                @include desktop{
+                    background-color: rgba($color-hackgsu-blue, 0.1);
+                }
+            }
+        }
+        .titleWindow{
+            height: 20rem;
+            @include notMobile{
+                // height: initial;
+                // padding-top: 20vw;
+
+                margin-top: 10rem;
+                padding-bottom: 5vw;
+                @include desktop{
+                    padding-top: 5vw;
+                    margin-top: initial;
+                    @include flex(1,1,0);
+                    width: $full;
+                }
+            }
+            @include flexCenter;
+            .content{
+                @include flexCenter;
+                @include notMobile{
+                    height: $full;
+                }
+                img{
+                    @include noDecoration;
+                    @include notSelectable;
+                    height: $full;
+                    object-fit: contain;
+                }
+                i{
+                    font-size: 8rem;
+                    @include desktop{
+                        font-size: 6rem;
+                    }
+                    color: $color-hackgsu-blue;
+                }
+                .separator{
+                    width: 50vw;
+                    height: 2px;
+                    min-height: 2px;
+                    background-color: $color-hackgsu-blue;
+                    @include notMobile{
+                        width: 20vw;
+                    }
+                }
+                span{
+                    margin-top: 1rem;
+                    font-weight: 700;
+                    font-size: 2rem;
+                    color: $color-text-grey;
+                }
+            }
+        }
+        .request{
+            @include display_flex;
+            flex-direction: column;
+            width: $full;
+            min-height: fit-content;
+            @include desktop{
+                flex-direction: row;
+                @include flex(6,1,0);
+                    width: $full;
+            }
+
+            
+            .links{
+                @include flexCenter;
+                @include notMobile{
+                    flex-direction: row;
+                }
+                .link{
+                    @include transition(background-color, .4s, 0s);
+                    color: $color-hackgsu-blue;
+                    width: 80vw;
+                    @include notMobile{
+                        width: initial;
+                    }
+                    padding: 1.5rem 0rem;
+                    border-radius: 0.4rem;
+                    border: 0.2rem solid $color-hackgsu-blue;
+                    margin-bottom: 2rem;
+                    text-align: center;
+                    font-size: 5vw;
+                    @include notMobile{
+                        font-size: 1.4vw;
+                        padding: 1rem 2rem;
+                    }
+        
+                    span{
+                        @include noDecoration;
+                        @include notSelectable;
+                        @include transition(color, .4s, 0s);
+                    }
+                }
+    
+                .link:not(:last-child){
+                    @include notMobile{
+                        margin-right: 1rem;
+                    }
+                }
+        
+                .link:first-child{
+                    // background-color: rgba($color-hackgsu-blue, 0.1);
+                    span{
+                        // color: white;
+                    }
+                }
+        
+                .link:focus, .link:active{
+                    background-color: $color-hackgsu-blue;
+                    span{
+                        color: white;
+                    }
+                }
+                .link:hover{
+                    @include notMobile{
+                        background-color: $color-hackgsu-blue;
+                        cursor: pointer;
+                        span{
+                            color: white;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+            .label{
+                @include noDecoration;
+                @include notSelectable;
+                font-weight: 700;
+                margin-bottom: 0.5rem;
+                text-transform: uppercase;
+                color: $color-text-grey;
+            }
+            .help{
+                // background-color: red;
+                height: 60vw;
+                width: $full;
+                @include display_flex;
+                flex-direction: column;
+                @include notMobile{
+                 height: 40vh;
+                 @include desktop{
+                     padding: 0 2rem;
+                 }    
+                }
+                .label{
+    
+                }
+                textarea{
+                    @include noDecoration;
+                    border: 1px solid $color-black;
+                    border-radius: 0.2rem;
+                    height: $full;
+                    resize: none;
+                    width: $full;
+                    padding: 2rem;
+                    min-height: 100px;
+                    font-size: 1.2rem;
+                    color: black;
+                    line-height: 2rem;
+                    vertical-align: middle;
+                    @include quickTransition (border-color);
+                }
+                textarea:focus{
+                    border-color: $color-hackgsu-blue;
+                }
+            }
+            .additionalInfo{
+                @include flexCenter;
+                margin-top: 15%;
+                @include desktop{
+                    margin-top: initial;
+                    padding: 0 2rem;
+                    justify-content: flex-start;
+                }
+                width: $full;
+                .additionalLabel{
+                    @include noDecoration;
+                    @include notSelectable;
+                    font-size: 1.8rem;
+                    color: $color-hackgsu-blue;
+                }
+                .additionalDescription{
+                    @include noDecoration;
+                    @include notSelectable;
+                    margin-bottom: 15%;
+                    @include desktop{
+                        margin-bottom: 2rem;
+                    }
+                }
+                .requestInputFields{
+                    // background-color: red;
+                    width: $full;
+                    @include display_flex;
+                    flex-direction: column;
+                    @include desktop{
+                        flex-direction: row;
+                    }
+                    .fields{
+                        @include desktop{
+                            @include flex(1,1,0);
+                            padding: 0 2rem;
+                        }
+                    }
+                    .input{
+                        @include display_flex;
+                        flex-direction: column;
+                        input::-webkit-outer-spin-button,
+                        input::-webkit-inner-spin-button {
+                            /* display: none; <- Crashes Chrome on hover */
+                            -webkit-appearance: none;
+                            margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+                        }
+                        .label{
+                            font-size: 1rem;
+                            margin-bottom: 0;
+                        }
+                        input{
+                            @include noDecoration;
+                            @include noDecoration;
+                            border: none;
+                            border: 1px solid $color-black;
+                            @include quickTransition(border-color);
+                            border-radius: 0.2rem;
+                            resize: none;
+                            font-size: 1.2rem;
+                            color: black;
+                            padding: 1rem 1.5rem;
+                            margin: 1rem 0 2rem;
+
+                            &.prefilled{
+                                background-color: $color-grey
+                            }
+                        }
+                        input:focus{
+                            border-color: $color-hackgsu-blue;
+                        }
+
+                        .rooms{
+                            @include display_flex;
+                            align-items: center;
+                            width: $full;
+                            overflow: hidden;
+                            justify-content: center;
+
+                            .section{
+                                @include flex(1,1,0);
+                                text-align: center;
+                                input{
+                                    width: $full;
+                                    text-align: center;
+                                }
+                                @include desktop{
+                                    @include flex(3,1,0);
+                                }
+                            }
+
+                            .or{
+                                @include noDecoration;
+                                @include notSelectable;
+                                @include flex(1,1,0);
+                                text-align: center;
+                                font-weight: 700;
+                                font-size: 1rem;
+                                color: $color-text-grey;
+                                text-transform: uppercase;
+                            }
+                        }
+
+                        .description{
+                            @include noDecoration;
+                            @include notSelectable;
+                            font-size: 1rem;
+                            color: $color-text-grey;
+                        }
+                    }
+                }
+            }
+        }
+
+        
+    }
+}
+
+

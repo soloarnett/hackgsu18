@@ -1,0 +1,74 @@
+<div class="container" [class]="'container ' + loadInOutAnimation()">
+    <app-navbar></app-navbar>
+    <app-alert-window [class]="(alertActive ? 'active' : 'inactive') + ' ' + (alertVisible ? 'visible' : 'invisible')"></app-alert-window>
+
+    <div class="titleWindow">
+      <div class="content">
+        <!-- <img [src]="image" alt=""> -->
+        <i class="material-icons">check_box</i>
+        <div class="separator"></div>
+        <span>Check Status</span>
+      </div>
+    </div>
+
+    <div class="request" *ngIf="statusAvailable">
+      <span class="head">Your Request</span>
+      <div class="requestContainer">
+        <div class="name">
+          <span>{{request.name}}</span>
+        </div>
+
+        <div class="requestInfo">
+          <div class="row">
+            <div class="item room">
+                <div class="current" *ngIf="request.room">
+                  <span>Room</span>
+                  <span class="data">{{request.room}}</span>
+                </div>
+                <div class="nearest" *ngIf="request.nearest">
+                  <span>Near Room</span>
+                  <span class="data">{{request.nearest}}</span>
+                </div>
+              </div>
+              
+              <div class="item shirt">
+              <span>Shirt Color</span>
+              <span class="data">{{request.shirtColor}}</span>
+            </div>
+          </div>
+          <div class="row statusArea">
+            <div class="item status">
+              <span>Status</span>
+              <span class="data">{{request.status}}</span>
+            </div>
+          </div>
+          <div class="row options">
+            <div class="option" (click)="cancel()" *ngIf="!cancelHidden">
+              <span>Cancel Request</span>
+            </div>
+            <div class="option" (click)="newRequest()" *ngIf="cancelHidden">
+              <span>New Request</span>
+            </div>
+            <div class="option" (click)="refresh()">
+              <span>Check Again</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="email" *ngIf="!statusAvailable && !emailHidden">
+      <span class="label">Email Address</span>
+      <div class="input">
+          <input type="email" name="email" id="email" [(ngModel)]="email" (keyup.enter)="checkEmail()">
+          <div class="submit" (click)="checkEmail()">
+            <i class="material-icons">arrow_forward</i>
+          </div>
+      </div>
+      
+    </div>
+
+    <div class="wrongRequest" (click)="wrong()" *ngIf="statusAvailable">
+      <span>Not your request?</span>
+    </div>
+</div>

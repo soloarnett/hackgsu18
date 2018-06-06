@@ -122,6 +122,13 @@ $desktop-width: 1024px;
 //     @return 'background-image:' + $link;
 // }
 
+@mixin labelStyle(){
+    font-size: 1rem;
+    font-weight: 700;
+    color: $color-text-grey;
+    text-transform: uppercase;
+}
+
 @mixin squareArea($size){
     height: $size + vh;
     width: $size + vw;
@@ -203,6 +210,15 @@ $desktop-width: 1024px;
     -webkit-transition-delay: $delay;
     transition-delay: $delay;
     -webkit-transform: translate3d(0, 0, 0);
+}
+@mixin transition3D($attribute, $time, $delay){
+    -moz-transition: $attribute $time ease-out;
+    -o-transition: $attribute $time ease-out;
+    -webkit-transition: $attribute $time ease-out;
+    -ms-transition: $attribute $time ease-out;
+    transition: $attribute $time ease-out; 
+    -webkit-transition-delay: $delay;
+    transition-delay: $delay;
 }
 
 @mixin transitionCust($attribute, $time, $delay, $easeing){
@@ -478,12 +494,21 @@ $desktop-width: 1024px;
     -ms-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     @include quickTransition(box-shadow);
 }
+
 @mixin card2_noTrans(){
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     -webkit-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     -moz-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     -o-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     -ms-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+@mixin reverseCard_noTrans(){
+    box-shadow: 0 -3px 6px rgba(0,0,0,0.16);
+    -webkit-box-shadow: 0 -3px 6px rgba(0,0,0,0.16);
+    -moz-box-shadow: 0 -3px 6px rgba(0,0,0,0.16);
+    -o-box-shadow: 0 -3px 6px rgba(0,0,0,0.16);
+    -ms-box-shadow: 0 -3px 6px rgba(0,0,0,0.16);
 }
 @mixin card3(){
     box-shadow: 0 3px 6px rgba(255,255,255,0.16), 0 3px 6px rgba(255,255,255,0.23);
@@ -493,6 +518,28 @@ $desktop-width: 1024px;
     -ms-box-shadow: 0 3px 6px rgba(255,255,255,0.16), 0 3px 6px rgba(255,255,255,0.23);
     @include quickTransition(box-shadow);
 }
+
+@mixin noDS(){
+    @include noDecoration();
+    @include notSelectable();
+}
+
+@mixin loadInOutAnimation(){
+    opacity: 0;
+
+    &.active{
+        opacity: 1;
+    }
+
+    &.inactive{
+        opacity: 0;
+    }
+
+    &.loading{
+        @include transition3D(opacity, .4s, 0s);
+    }
+}
+
 @mixin display_flex(){
     display:-webkit-flex; /* Chrome/Safari */        
     display:-moz-flex; /* Firefox */

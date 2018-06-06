@@ -1,0 +1,24 @@
+<div class="container" [class]="'container ' + loadInOutAnimation()">
+  <app-navbar></app-navbar>
+  <app-alert-window [class]="(alertActive ? 'active' : 'inactive') + ' ' + (alertVisible ? 'visible' : 'invisible')"></app-alert-window>
+  <div class="titleWindow">
+    <div class="content">
+      <i class="material-icons">group</i>
+      <div class="separator"></div>
+      <span>Hack Support</span>
+    </div>
+  </div>
+  <div class="links">
+    <div class="link" routerLink="/support/new" routerLinkActive="active">
+      <span>Get Help Now</span>
+    </div>
+    <div class="link" routerLink="/support/status" routerLinkActive="active">
+      <span>Check Status</span>
+    </div>
+    <div class="link" routerLink="/mentors" routerLinkActive="active">
+      <span>Mentor Login</span>
+    </div>
+  </div>
+
+  
+</div>

@@ -1,10 +1,9 @@
 @import './src/assets/styles/main';
 body,html{
     height: $full;
-    background-color: $color-hackgsu;
-    position: fixed;
 }
 app-home{
+    position: fixed;
 //     width: $full;
     height: $full;
     background-color: $color-hackgsu;
@@ -17,12 +16,32 @@ a{
 a:active{
     background-color: rgba($color-text-grey, 0.4);
 }
-*{
-    @include quickTransitionColors;
+
+app-about{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: $full;
+    height: $full;
+    opacity: 0;
+    @keyframes displayAbout {
+        from{
+            opacity: 0;
+        }
+        to{
+            opacity: 1;
+        }
+    }
+
+    animation: displayAbout .4s ease-out 0s forwards;
+
 }
-*:hover{
-    @include quickTransitionColors;
-}
+// *{
+//     @include quickTransitionColors;
+// }
+// *:hover{
+//     @include quickTransitionColors;
+// }
 
 section{
     @include display_flex;
@@ -46,10 +65,26 @@ section{
     @include desktop{
         @include flex(5,1,0);
     }
-    
+    opacity: 0;
     flex-direction: column;
     @include desktop{
         flex-direction: row;
+    }
+
+    &.active{
+        opacity: 1;
+    }
+
+    &.inactive{
+        opacity: 0;
+    }
+
+    &.loading{
+        @include transition(opacity, .4s, 0s);
+    }
+
+    &.notLoading{
+        // 
     }
 
     .main{
@@ -251,7 +286,7 @@ section{
                         }
                     }
 
-                    a{
+                    .actionLink, a{
                         width: $full;
                         height: $full;
                         min-height: max-content;
@@ -294,6 +329,12 @@ section{
                             }
                             
                             // margin: auto;
+                            &.sponsors{
+                                color: $color-red;
+                            }
+                            &.blue{
+                                color: $color-hackgsu-blue;
+                            }
                         }
                         span{
                             @include flex(1,1,0);
@@ -400,12 +441,12 @@ section{
                         }
                     }
 
-                    // .registrationAlt, .slack{
-                    //     a{
-                    //         // color: $color-hackgsu;
-                    //         opacity: 0.3
-                    //     }
-                    // }
+                    .registrationAlt{
+                        a{
+                            color: $color-hackgsu;
+                            opacity: 0.3
+                        }
+                    }
                     
                 }
             }

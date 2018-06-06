@@ -1,0 +1,72 @@
+@import './src/assets/styles/main';
+
+.container{
+    width: 300px;
+    height: 100px;
+
+    background-color:black;
+    // $border-color: $color-text-grey;
+    // border-top: 5px solid $border-color;
+    // border-left: 5px solid $border-color;
+    // border-right: 5px solid $border-color;
+    // border-top-left-radius: 5px;
+    // border-top-right-radius: 5px; 
+    // border: 5px solid $border-color;
+    border-radius: 5px;
+    overflow: hidden;
+    @include card2_noTrans;
+
+
+
+    &.closed{
+        display: none;
+    }
+
+    @include display_flex;
+    flex-direction: column;
+
+    *{
+        @include noDecoration;
+        span, i{
+            @include noDS;
+            color: white;
+        }
+    }
+
+    .top{
+        @include flex(1,1,0);
+        @include display_flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: row-reverse;
+        @include notMobile{
+            flex-direction: row;
+        }
+
+        .close{
+            @include display_flex;
+            align-items: center;
+            cursor: pointer;
+            i{
+                cursor: pointer;
+            }
+        }
+    }
+    .bottom{
+        @include flex(1,1,0);
+        @include display_flex;
+        cursor: pointer;
+        .download{
+            @include flex(1,1,0);
+            @include flexCenter;
+            background-color: $color-hackgsu-blue;
+            span{
+                cursor: pointer;
+            }
+
+            &.android{
+                background-color: $color-green;
+            }
+        }
+    }
+}

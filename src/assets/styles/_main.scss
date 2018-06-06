@@ -8,17 +8,13 @@
 
 // VARIABLES
     $MobileConstraints: 1rem;
-    $TabletConstraints: 1rem;
-    $DesktopConstraints: 1rem;
+    $TabletConstraints: 1.5rem;
+    $DesktopConstraints: 2rem;
 // END VARIABLES
 
 *, *:after, *:before{
     box-sizing: border-box;
     // webkit-transform: translate3d(0, 0, 0);
-}
-
-.fontClient{
-    font-family: $font-mindset;
 }
 
 .noDecor{
@@ -84,5 +80,5 @@
     }
 }
 
-$circle: 1000px;
+$circle: 1000rem;
 

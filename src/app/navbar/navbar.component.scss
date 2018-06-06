@@ -60,7 +60,7 @@
         }
         
     }
-    z-index: 2;
+    z-index: 3;
     
     // &.open{
     //     @include mobile{
@@ -84,6 +84,7 @@
 }
 
 #menu{
+    z-index: 2;
     position: fixed;
     overflow-x: hidden;
     // bottom: 50px;
@@ -122,7 +123,6 @@
         height: calc(100% - 50px);
         width: 30%;
     }
-    z-index: 1;
     
     
     
@@ -159,6 +159,12 @@
         @include noDecoration;
         @include notSelectable;
         cursor: pointer;
+        max-width: 33.33%;
+        min-width: 33.33%;
+        @include notMobile{
+            max-width: initial;
+            min-width: initial;
+        }
     }
 
     .menuItem{
@@ -191,17 +197,23 @@
             // color: white;
             padding: 1rem 2rem;
             display: block;
-            font-size: 2rem;
+            font-size: 1.5rem;
+            text-align: center;
             @include mobile{
-                font-weight: 300;
+                font-size: 2rem;
+                // font-weight: 300;
             }
         }
         i{
             @include mobile{
-                font-size: 20vw;
+                font-size: 15vw;
                 @include tablet{
                     font-size: 2rem;
                 }
+            }
+
+            &.sponsors{
+                color: $color-red;
             }
         }
     }
