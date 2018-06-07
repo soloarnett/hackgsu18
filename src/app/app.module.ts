@@ -23,6 +23,7 @@ import { AlertWindowComponent } from './alert-window/alert-window.component';
 import { AboutComponent } from './about/about.component';
 import { SponsorsComponent } from './sponsors/sponsors.component';
 import { GetTheAppComponent } from './get-the-app/get-the-app.component';
+import { QrtestComponent } from './qrtest/qrtest.component';
 
 
 
@@ -45,7 +46,8 @@ import { GetTheAppComponent } from './get-the-app/get-the-app.component';
     AlertWindowComponent,
     AboutComponent,
     SponsorsComponent,
-    GetTheAppComponent
+    GetTheAppComponent,
+    QrtestComponent
   ],
   imports: [
     BrowserModule,

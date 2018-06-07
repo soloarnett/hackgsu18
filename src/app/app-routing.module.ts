@@ -11,12 +11,15 @@ import { MentorsStatusComponent } from './mentors-status/mentors-status.componen
 import { MentorsLoginComponent } from './mentors-login/mentors-login.component';
 import { MentorsVerifyStatusComponent } from './mentors-verify-status/mentors-verify-status.component';
 import { SponsorsComponent } from './sponsors/sponsors.component';
+import { QrtestComponent } from './qrtest/qrtest.component';
 
 const routes: Routes = [
   // { path: 'welcome', redirectTo: '', pathMatch: 'full' },
   // { path: 'home', redirectTo: '', pathMatch: 'full' },
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'faq', component: FaqComponent },
+  { path: 'qr', component: QrtestComponent },
+
   /** Temporarily Disabled
   { path: 'schedule', component: ScheduleComponent },
   { path: 'sponsors', component: SponsorsComponent },

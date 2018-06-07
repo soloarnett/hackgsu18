@@ -2,6 +2,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { AlertWindowService } from './alert-window.service';
 import { fadeInAnimation } from './_animations/fadeInAnimation';
 import { AboutWindowHandlerService } from './about-window-handler.service';
+declare const qrcode: any
 
 @Component({
   selector: 'app-root',
