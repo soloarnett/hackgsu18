@@ -1,0 +1,20 @@
+<div class="pageHeader">
+  <span>Projects</span>
+</div>
+<div id="projects"></div>
+<div id="nav" [class]="menuState">
+  <div class="navbar">
+    <div id="backButton" class="menuItem">
+      <i class="material-icons">home</i>
+      <span>Home</span>
+    </div>
+    <div id="menuButton" class="menuItem" (click)="toggleMenuState()">
+      <i class="material-icons">menu</i>
+      <span>Menu</span>
+    </div>
+    <div id="closeButton" (click)="toggleMenuState()">
+        <i class="material-icons">close</i>
+        <span>Close</span>
+    </div>
+  </div>
+</div>

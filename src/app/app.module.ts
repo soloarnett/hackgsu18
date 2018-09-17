@@ -25,6 +25,7 @@ import { SponsorsComponent } from './sponsors/sponsors.component';
 import { GetTheAppComponent } from './get-the-app/get-the-app.component';
 import { QrtestComponent } from './qrtest/qrtest.component';
 import { AccountsComponent } from './accounts/accounts.component';
+import { ProjectsComponent } from './accounts/participant/projects/projects.component';
 
 
 
@@ -49,7 +50,8 @@ import { AccountsComponent } from './accounts/accounts.component';
     SponsorsComponent,
     GetTheAppComponent,
     QrtestComponent,
-    AccountsComponent
+    AccountsComponent,
+    ProjectsComponent
   ],
   imports: [
     BrowserModule,

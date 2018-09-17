@@ -14,38 +14,39 @@ export class QrtestComponent implements OnInit {
   userId: string = "8009f1ed-3d94-48bf-8da6-764ef4511947"
 
   user
+  code:string
 
-  onFileChange(event) {
-    try {
-      const file = event.target.files[0]
-      const reader = new FileReader()
-      reader.readAsDataURL(file)
-      reader.onload = (e: any) => {
-        const data = e.target.result
-        qrcode.callback = (res) => {
-          console.log('res', res)
-          switch(res){
-            case 'error decoding QR Code':
-            case 'Failed to load the image':
-              console.log('notify user to take a better picture')
-              break
-            default:
-              this.verifyQrCode(res)
-          }
-        }
-        qrcode.decode(data)
-      }
-    } catch (e) {
-      console.log('no file chosen')
-    }
-  }
+  // onFileChange(event) {
+  //   try {
+  //     const file = event.target.files[0]
+  //     const reader = new FileReader()
+  //     reader.readAsDataURL(file)
+  //     reader.onload = (e: any) => {
+  //       const data = e.target.result
+  //       qrcode.callback = (res) => {
+  //         console.log('res', res)
+  //         switch(res){
+  //           case 'error decoding QR Code':
+  //           case 'Failed to load the image':
+  //             console.log('notify user to take a better picture')
+  //             break
+  //           default:
+  //             this.verifyQrCode(res)
+  //         }
+  //       }
+  //       qrcode.decode(data)
+  //     }
+  //   } catch (e) {
+  //     console.log('no file chosen')
+  //   }
+  // }
 
-  verifyQrCode(code) {
+  verifyQrCode() {
     let url = "https://aeb4oc6uwg.execute-api.us-east-1.amazonaws.com/prod/verifyqrcode"
-    console.log('qr code value', code);
+    console.log('qr code value', this.code);
     let params = {
       body: {
-        id: code,
+        id: this.code,
       },
       headers: {
         "Content-Type": "application/json"

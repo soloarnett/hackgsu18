@@ -1,0 +1,160 @@
+@import './src/assets/styles/main';
+
+:host{
+    // min-height: fit-content;
+    // position: absolute;
+    // width: $full;
+}
+$projectsMarginTop: 20rem;
+#projects{
+    height: 200vh;
+    background-color: white;
+    // margin: 2rem 2rem 0;
+    margin: 2rem;
+    margin-top: $projectsMarginTop;
+    border-radius: 1rem;
+    // border-top-left-radius: 1rem;
+    // border-top-right-radius: 1rem;
+    position: relative;
+}
+
+#nav{
+    @include noDecoration;
+    position: fixed;
+    bottom: 4rem;
+    left: 0;
+    width: $full;
+    height: 6rem;
+    padding: 0 4rem;
+    @include transition(all, .4s, 0s);
+    will-change: height, padding, background-color;
+    *{
+        will-change: height, padding, background-color;
+    }
+
+    @include notMobile{
+        width: 40rem;
+        min-width: fit-content;
+        left: initial;
+        right: 0;
+    }
+
+    .navbar{
+        background-color: $color-hackgsu-new-blue;
+        height: $full;
+        @include quickTransition(all);
+        border-radius: 1rem;
+        padding: 1rem 2rem;
+        @include flexBetween(false);
+        @include desktop{
+            padding: 0 2rem;
+        }
+
+        *{
+            color: white;
+        }
+
+        .menuItem{
+            // @include flexBetween(false);
+            @include display_flex;
+            align-items: center;
+            @include quickTransition(opacity);
+            i{
+                font-size: 3rem;
+                margin-right: 1rem;
+            }
+            span{
+                font-size: 2rem;
+                font-family: $font-dosis;
+                // font-weight: 700;
+            }
+        }
+
+        #closeButton{
+            opacity: 0;
+            position: absolute;
+            visibility: hidden;
+            right: 3rem;
+            bottom: 2rem;
+            @include display_flex;
+            align-items: center;
+            i{
+                font-size: 3rem;
+                margin-right: 1rem;
+            }
+            span{
+                font-size: 2rem;
+                font-family: $font-dosis;
+                // font-weight: 700;
+            }
+            @include transition(opacity, .2s, .4s);
+        }
+
+        
+    }
+
+    &.true{
+        // height: 100%;
+        // padding: 0;
+        cursor: default;
+        bottom: 0;
+        padding: 1rem;
+        height: $full;
+        background-color: white;
+
+        @include notMobile{
+            height: 50%;
+            background-color: initial;
+            padding: 0 4rem;
+            bottom: 4rem;
+        }
+        
+        .navbar{
+            // border-radius: 0;
+            #closeButton{
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+
+        
+
+        // @keyframes openMenu{
+        //     from{
+        //         bottom: 4rem;
+        //     }
+        //     to{
+        //         bottom: 0;
+        //     }
+        // }
+
+        // animation: openMenu .4s ease 0s forwards;
+
+        // @include desktop{
+        //     height: 50%;
+        //     padding: 0 4rem;
+        //     .menuItem{
+        //         opacity: 0;
+        //     }
+        // }
+
+        .menuItem{
+            opacity: 0;
+        }
+    }
+
+}
+
+.pageHeader{
+    position: fixed;
+    width: $full;
+    @include flexCenter;
+    $pageHeaderHeight: 6rem;
+    height: $pageHeaderHeight;
+    top: #{$projectsMarginTop - $pageHeaderHeight};
+    span{
+        color: white;
+        font-size: 2rem;
+    }
+    // left: 0;
+}

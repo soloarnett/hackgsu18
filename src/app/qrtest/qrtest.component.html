@@ -1,5 +1,7 @@
 <h1>Qr code reader test</h1>
-<input type="file" accept="image/*" (change)="onFileChange($event)">
+<!-- <input type="file" accept="image/*" (change)="onFileChange($event)"> -->
+
+<input type="text"[(ngModel)]="code" (keyup.enter)="verifyQrCode()">
 
 <div class="userInfo" *ngIf="user">
   <img [src]="user.avatar" alt="">

@@ -13,9 +13,9 @@ export class HomeComponent implements OnInit {
 
   actionGroupActions:Array<string> = [
     // Registration Link
-    // "http://goo.gl/ESF8Mj",
+    "https://hackspurt.com/hackgsu/register/student",
     // Preregistration Link
-    "https://goo.gl/forms/mndU8vm6mHVKYXcD2",
+    // "https://goo.gl/forms/mndU8vm6mHVKYXcD2",
     //Volunteer Link
     // "https://hackgsuspring2018.typeform.com/to/Jxrdks",
     // Sponsor Us Link
