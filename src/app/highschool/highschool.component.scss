@@ -1,0 +1,50 @@
+@import './src/assets/styles/main';
+
+:host{
+    background-color: $color-hackgsu;
+    @include display_flex;
+    flex-direction: column;   
+    height: $full;
+    width: $full;
+    position: absolute;
+    top: 0;
+    left: 0;
+    .main{
+        background-color: white;
+        @include display_flex;
+        flex-direction: column;
+
+        padding: 25vw 4rem;
+        @include notMobile{
+            padding: 10vw 15vw;
+        }
+    }
+    .forms{
+        @include display_flex;
+        flex-direction: column;
+    }
+    .label{
+        margin-bottom: 1rem;
+    }
+    a{
+        @include noDecoration;
+        @include display_flex;
+        background-color: $color-hackgsu-blue;
+        align-items: center;
+        padding: 1.5rem 2rem;
+        margin: 1rem 0;
+        max-width: fit-content;
+        border-radius: .5rem;
+
+        i{
+            color: white;
+            margin-right: 1rem;
+        }
+
+        span{
+            color: white;
+        }
+
+
+    }
+}

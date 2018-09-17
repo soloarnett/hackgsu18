@@ -26,6 +26,7 @@ import { GetTheAppComponent } from './get-the-app/get-the-app.component';
 import { QrtestComponent } from './qrtest/qrtest.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { ProjectsComponent } from './accounts/participant/projects/projects.component';
+import { HighschoolComponent } from './highschool/highschool.component';
 
 
 
@@ -51,7 +52,8 @@ import { ProjectsComponent } from './accounts/participant/projects/projects.comp
     GetTheAppComponent,
     QrtestComponent,
     AccountsComponent,
-    ProjectsComponent
+    ProjectsComponent,
+    HighschoolComponent
   ],
   imports: [
     BrowserModule,

@@ -13,6 +13,7 @@ import { MentorsVerifyStatusComponent } from './mentors-verify-status/mentors-ve
 import { SponsorsComponent } from './sponsors/sponsors.component';
 import { QrtestComponent } from './qrtest/qrtest.component';
 import { AccountsComponent } from './accounts/accounts.component';
+import { HighschoolComponent } from './highschool/highschool.component';
 
 const routes: Routes = [
   // { path: 'welcome', redirectTo: '', pathMatch: 'full' },
@@ -21,6 +22,8 @@ const routes: Routes = [
   { path: 'faq', component: FaqComponent },
   { path: 'qr', component: QrtestComponent },
   { path: 'accounts', component: AccountsComponent },
+  { path: 'highschool', component: HighschoolComponent },
+
 
   /** Temporarily Disabled
   { path: 'schedule', component: ScheduleComponent },
