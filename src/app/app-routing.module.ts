@@ -20,13 +20,13 @@ const routes: Routes = [
   // { path: 'home', redirectTo: '', pathMatch: 'full' },
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'faq', component: FaqComponent },
-  { path: 'qr', component: QrtestComponent },
-  { path: 'accounts', component: AccountsComponent },
+  // { path: 'qr', component: QrtestComponent },
+  // { path: 'accounts', component: AccountsComponent },
   { path: 'highschool', component: HighschoolComponent },
-
+  { path: 'schedule', component: ScheduleComponent },
 
   /** Temporarily Disabled
-  { path: 'schedule', component: ScheduleComponent },
+  
   { path: 'sponsors', component: SponsorsComponent },
   { path: 'support', component: MentorsComponent },
   { path: 'support/new', component: MentorsNewComponent },

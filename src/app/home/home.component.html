@@ -3,7 +3,12 @@
 
   <div class="main" id="info">
     <div class="logo" (click)="aboutToggle()">
-      <img src="assets/img/logo.svg">
+      <div class="image">
+        <img src="assets/img/logo.svg">
+      </div>
+      <div class="image">
+        <img class="ncr" src="assets/img/ncr.svg">
+      </div>
     </div>
     <div class="details">
       <span class="title light">H A C K&nbsp;
@@ -25,23 +30,22 @@
             <span class="label">Register Now!</span>
           </a>
         </div>
-        <!-- <div class="action schedule" (click)="goto('/schedule')">
-              <div class="actionLink">
-                <i class="material-icons">event</i>
-                <span class="label">Schedule</span>
-              </div>
-            </div> -->
+        <div class="action schedule" (click)="goto('/schedule')">
+          <div class="actionLink">
+            <i class="material-icons">event</i>
+            <span class="label">Schedule</span>
+          </div>
+        </div>
 
-        <!-- <div class="action join" (click)="goto('/sponsors')"> -->
-        <div class="action join">
+        <!-- <div class="action join">
           <a target="_blank" href="{{actionGroupActions[1]}}">
             <div class="actionLink">
               <i class="material-icons sponsors">favorite</i>
               <span class="label">Sponsor Us</span>
-              <!-- <span class="description">MUST BE A GSU STUDENT</span> -->
             </div>
           </a>
-        </div>
+        </div> -->
+        
 
         <!-- <div class="action contact" (click)="goto('/support')"> -->
         <div class="action contact">
@@ -83,11 +87,11 @@
             <span class="label">Contact Us</span>
           </a>
         </div>
-        <div class="subGroupAction">
+        <!-- <div class="subGroupAction">
           <a href="https://hackgsu3.typeform.com/to/KhjaZG" target="_blank">
             <span class="label">Travel Reimbursement</span>
           </a>
-        </div>
+        </div> -->
 
         <div class="subGroupAction highschool">
           <a href="/highschool">
