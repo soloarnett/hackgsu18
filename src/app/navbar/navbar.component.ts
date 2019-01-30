@@ -17,6 +17,14 @@ export class NavbarComponent implements OnInit {
     // }, 100)
   }
 
+  mentorRequest(){
+    window.location.href = 'https://hackspurt.com/hackgsu/details'
+  }
+
+  checkMentorRequest(){
+    window.location.href = 'https://hackspurt.com/hackgsu/request/status'
+  }
+
   loaded:boolean = false;
   pageLoading:boolean = false;
 

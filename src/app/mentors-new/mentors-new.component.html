@@ -77,7 +77,7 @@
             <div class="input">
               <span class="label">Favorite Programming Language</span>
               <span class="description">{{requestInputs.favorite.description}}</span>
-              <input [class]="requestInputs.favorite.active ? 'active' : 'inactive'" type="text" alt="You probably shouldn't tell anyone else this at the hackathon? Tell them after." name="favorite" [(ngModel)]="requestInputs.favorite.content">
+              <input [class]="requestInputs.favorite.active ? 'active' : 'inactive'" type="text" alt="Don't put your actual favorite. This is a security question." name="favorite" [(ngModel)]="requestInputs.favorite.content">
             </div>
           </div>
           

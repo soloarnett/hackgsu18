@@ -69,6 +69,7 @@ export class GetTheAppComponent implements OnInit {
   
   ngOnInit() {
     try{
+      console.log('pushUID', JSON.parse(localStorage.getItem('pushUID')))
       if(!localStorage.getItem('pushUID')){
         this.closed = JSON.parse(localStorage.getItem('downloadButtonClosed'))
         // localStorage.clear()
@@ -76,6 +77,7 @@ export class GetTheAppComponent implements OnInit {
         this.closed = true
       }
     }catch(e){
+      console.log('e', e)
       this.closed = false
     }
   }
