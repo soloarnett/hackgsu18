@@ -9,8 +9,18 @@ body,html{
 
 
 :host, app-schedule{
-    
-
+    // @include display_flex;
+    position: relative;
+    width: $full;
+    .ab{
+        @include display_flex;
+        position: absolute;
+        text-align: center;
+        top: 10rem;
+        width: 100vw;
+        padding: 2rem;
+        // @include absoluteCenter;
+    }
 
     height: $full;
     overflow: auto;

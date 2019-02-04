@@ -154,7 +154,7 @@ section {
       .details {
         @include display_flex;
         flex-direction: column;
-        @include gflex(2);
+        // @include gflex(2);
         @include notMobile{
             flex: initial;
         }
@@ -190,11 +190,15 @@ section {
 
       .logo {
         // @include flex(1,1,0);
+        width: 10rem;
+        height: 10rem;
         @include display_flex;
         flex-direction: row;
-        @include gflex(3);
+        // @include gflex(3);
         @include notMobile{
             flex: initial;
+            width: 15rem;
+            height: 15rem;
         }
         .image {
           @include gflex(1);

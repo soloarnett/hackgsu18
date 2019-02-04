@@ -23,7 +23,8 @@ export class HomeComponent implements OnInit {
     // FAQ Link
     "#faq",
     // Travel Reimbursment Link
-    "https://hackgsuspring2018.typeform.com/to/EM26kg",
+    // "https://hackgsuspring2018.typeform.com/to/EM26kg",
+    'https://goo.gl/forms/z4BOXGSxBFYqFsf13'
     // "#"
   ];
 
