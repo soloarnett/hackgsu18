@@ -11,7 +11,7 @@ import { AboutWindowHandlerService } from '../about-window-handler.service';
 })
 export class HomeComponent implements OnInit {
 
-  actionGroupActions:Array<string> = [
+  actionGroupActions: Array<string> = [
     // Registration Link
     "https://hackspurt.com/hackgsu/register/student",
     // Preregistration Link
@@ -28,66 +28,66 @@ export class HomeComponent implements OnInit {
     // "#"
   ];
 
-  loaded:boolean = false;
-  pageLoading:boolean = false;
-  aboutState:boolean =  false;
+  loaded: boolean = false;
+  pageLoading: boolean = false;
+  aboutState: boolean = false;
 
-  toggleLoad(){
+  toggleLoad() {
     this.loaded = this.loaded ? false : true
   }
 
-  aboutToggle(){
+  aboutToggle() {
     this.aboutwindowhandler.openWindow()
   }
 
-  setAboutWindowState(state:boolean){
+  setAboutWindowState(state: boolean) {
     this.aboutState = state
     this.loaded = !state
   }
 
-  loadInOutAnimation(){
+  loadInOutAnimation() {
     return (this.loaded ? 'active' : 'inactive') + ' ' + (this.pageLoading ? 'loading' : 'notLoading')
   }
 
-  startLoad(){
+  startLoad() {
     this.pageLoading = true
-    setTimeout(()=>{
+    setTimeout(() => {
       this.loaded = true
     }, 50)
-    
-    setTimeout(()=>{
+
+    setTimeout(() => {
       this.stopLoad()
     }, 450)
   }
 
-  stopLoad(){
+  stopLoad() {
     this.pageLoading = false
   }
 
-  goto(where:string){
-    
+  goto(where: string) {
+
     this.pageLoading = true
-    setTimeout(()=>{
+    setTimeout(() => {
       this.loaded = false
     }, 50)
-    
-    setTimeout(()=>{
+
+    setTimeout(() => {
       this.stopLoad()
       this.router.navigateByUrl(where)
     }, 450)
   }
 
-  subGroupActions:Array<string> = [
+  subGroupActions: Array<string> = [
     "mailto:hackathon@cs.gsu.edu",
     // slack
     // "https://goo.gl/ByrTkF",
-    "https://join.slack.com/t/hackgsufall2018/shared_invite/enQtMzc2MjIzNDMyNDE2LWMzZWU0NDU4M2U4YjI3ZWVjNDdjZTlhZThiNjU3MjM0NDY5NGY1ZDlkZjM3ZTdkNDhkNGVhMTBkYTFjOTc3MDc",
+    "http://Hackgsuspring2019.slack.com",
     // "#",
     // google form registration
     "https://goo.gl/forms/Pimkr6twZ2Q2YoJ52",
     // "#"
   ]
-  constructor(private router:Router, private aboutwindowhandler:AboutWindowHandlerService) { 
+  constructor(private router: Router, private aboutwindowhandler: AboutWindowHandlerService) {
     aboutwindowhandler.windowOpenState$.subscribe(
       windowState => {
         this.setAboutWindowState(windowState)
