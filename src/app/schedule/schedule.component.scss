@@ -9,7 +9,7 @@ body,html{
 
 
 :host, app-schedule{
-    // @include display_flex;
+    @include display_flex;
     position: relative;
     width: $full;
     .ab{

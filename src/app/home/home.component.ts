@@ -81,7 +81,7 @@ export class HomeComponent implements OnInit {
     "mailto:hackathon@cs.gsu.edu",
     // slack
     // "https://goo.gl/ByrTkF",
-    "http://Hackgsuspring2019.slack.com",
+    "https://join.slack.com/t/hackgsuspring2019/shared_invite/enQtNTU2Nzk3OTI0MjI5LWI1MWZmOTRiYTQ4Y2QzYmY4NDVmMTZlYzk2NmQ3ZmY1M2ViNDI5NTE0ZTFiNTdlZTM1MzBmNTM2MjJlMmM0Y2I",
     // "#",
     // google form registration
     "https://goo.gl/forms/Pimkr6twZ2Q2YoJ52",

@@ -1,10 +1,10 @@
-<div class="ab">
+<!-- <div class="ab">
   <h1>Stay tuned for updates to our schedule.</h1>
-</div>
+</div> -->
 <section id="schedule" [class]="loadInOutAnimation()">
 
   <div class="topfix"></div>
-  <!-- <div class="dayController noDS">
+  <div class="dayController noDS">
     <div class="container">
       <div class="otherDays">
         <span class="day" *ngFor="let day of otherDays" (click)="getDay(day)">{{day}}</span>
@@ -32,11 +32,11 @@
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
 </section>
 <section id="desktopSchedule" [class]="loadInOutAnimation()">
 
-  <!-- <div class="allEvents">
+  <div class="allEvents">
     <div class="day" *ngFor="let day of events">
       <div class="events">
         <div class="dayController">
@@ -53,10 +53,10 @@
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
 </section>
-<!-- <div class="nextDay" (click)="nextDay()">
+<div class="nextDay" (click)="nextDay()">
   <span>Next Day</span>
-</div> -->
+</div>
 <app-navbar id="scheduleNavbar"></app-navbar>
 <app-alert-window [class]="(alertActive ? 'active' : 'inactive') + ' ' + (alertVisible ? 'visible' : 'invisible')"></app-alert-window>

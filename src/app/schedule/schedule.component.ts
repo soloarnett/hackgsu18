@@ -11,34 +11,65 @@ import { AlertWindowService } from '../alert-window.service';
   styleUrls: ['./schedule.component.scss']
 })
 export class ScheduleComponent implements OnInit {
-  currentDay:string = ""
-  otherDays:Array<string> = []
-  currentDate:string = ""
+  currentDay: string = ""
+  otherDays: Array<string> = []
+  currentDate: string = ""
   events
   eventsByDay
   otherEvents
 
-  alertActive:boolean = true
-  alertVisible:boolean = true
-  
-  constructor(private http:HttpClient, private alertwindowservice:AlertWindowService) {
+  alertActive: boolean = true
+  alertVisible: boolean = true
+
+  constructor(private http: HttpClient, private alertwindowservice: AlertWindowService) {
     alertwindowservice.alertActiveState$.subscribe(
-      (alertActiveState:boolean) =>{
+      (alertActiveState: boolean) => {
         this.alertActive = alertActiveState
       }
     )
 
     alertwindowservice.alertVisibleState$.subscribe(
-      (alertVisibleState:boolean) =>{
+      (alertVisibleState: boolean) => {
         this.alertVisible = alertVisibleState
       }
     )
   }
 
-  getEvents(byDay){
+  getEvents(byDay) {
     this.alertwindowservice.showDataWithoutButton('Just a moment...<br><br>Gathering all events')
     let url = "https://aeb4oc6uwg.execute-api.us-east-1.amazonaws.com/prod/getevents"
-    let request = this.http.request("POST",url, {
+    const display = () => {
+      this.events.forEach(day => {
+        console.log(day)
+        day.events.forEach(event => {
+          switch (event.title.toLowerCase()) {
+            case 'lunch':
+            case 'dinner':
+            case 'snack':
+            case 'breakfast':
+              let theseEvents = this.events
+              let thisDay = theseEvents[theseEvents.indexOf(day)]
+              let thisEvent = thisDay.events[thisDay.events.indexOf(event)]
+              thisEvent.description = null;
+              // console.log(thisDay)
+              // console.log(this.events[this.events.indexOf(day)].events.indexOf(event))
+              break
+            // this.events[day].events[event].description = null
+          }
+        });
+      });
+      this.getDay("friday")
+      this.alertwindowservice.hide()
+    }
+    if (localStorage['schedule'] && localStorage['schedule'].length > 0) {
+      try {
+        this.events = JSON.parse(localStorage['schedule'])
+        display()
+      } catch (e) {
+        // no stored schedule
+      }
+    }
+    let request = this.http.request("POST", url, {
       body: {
         byDay: byDay ? true : false
       },
@@ -47,29 +78,10 @@ export class ScheduleComponent implements OnInit {
       }
     }).subscribe(
       res => {
-        this.events = res 
+        this.events = res
+        localStorage['schedule'] = JSON.stringify(this.events)
         console.log(this.events)
-        this.events.forEach(day => {
-          console.log(day)
-          day.events.forEach(event => {
-            switch(event.title.toLowerCase()){
-              case 'lunch':
-              case 'dinner':
-              case 'snack':
-              case 'breakfast':
-              let theseEvents = this.events
-              let thisDay = theseEvents[theseEvents.indexOf(day)]
-              let thisEvent = thisDay.events[thisDay.events.indexOf(event)]
-              thisEvent.description = null;
-              // console.log(thisDay)
-                // console.log(this.events[this.events.indexOf(day)].events.indexOf(event))
-              break
-              // this.events[day].events[event].description = null
-            }
-          });
-        });
-        this.getDay("friday")
-        this.alertwindowservice.hide()
+        display()
         // this.startLoad()
       },
       err => {
@@ -78,51 +90,51 @@ export class ScheduleComponent implements OnInit {
     );
   }
 
-  displayEvent(description){
-    if(description){
+  displayEvent(description) {
+    if (description) {
       this.alertwindowservice.showDataWithButton(description)
     }
   }
 
-  loaded:boolean = false;
-  pageLoading:boolean = false;
+  loaded: boolean = false;
+  pageLoading: boolean = false;
 
-  toggleLoad(){
+  toggleLoad() {
     this.loaded = this.loaded ? false : true
   }
 
-  loadInOutAnimation(){
+  loadInOutAnimation() {
     return (this.loaded ? 'active' : 'inactive') + ' ' + (this.pageLoading ? 'loading' : 'notLoading')
   }
 
-  startLoad(){
+  startLoad() {
     this.pageLoading = true
-    setTimeout(()=>{
+    setTimeout(() => {
       this.loaded = true
     }, 50)
-    
-    setTimeout(()=>{
+
+    setTimeout(() => {
       this.stopLoad()
     }, 450)
   }
 
-  stopLoad(){
+  stopLoad() {
     this.pageLoading = false
   }
 
-  getOtherDays(element){
+  getOtherDays(element) {
     let otherEvents = this.events.filter(e => e.day.toLowerCase() != element.day.toLowerCase())
-    let eventString:Array<string> = []
+    let eventString: Array<string> = []
     otherEvents.forEach(element => {
       eventString.push(element.day)
     })
     return eventString
   }
 
-  getDay(day:string){
-    window.scrollTo(0,0)
+  getDay(day: string) {
+    window.scrollTo(0, 0)
     this.events.forEach(element => {
-      if (element.day.toLowerCase() == day.toLowerCase()){
+      if (element.day.toLowerCase() == day.toLowerCase()) {
         this.currentDay = day
         this.currentDate = element.date
         this.otherDays = this.getOtherDays(element)
@@ -132,8 +144,8 @@ export class ScheduleComponent implements OnInit {
   }
 
 
-  pickDay(){
-    switch(this.currentDay.toLowerCase()){
+  pickDay() {
+    switch (this.currentDay.toLowerCase()) {
       case 'friday':
         this.getDay('saturday')
         break
@@ -146,12 +158,12 @@ export class ScheduleComponent implements OnInit {
     }
   }
 
-  nextDay(){
+  nextDay() {
     this.alertwindowservice.showDataWithoutButton('')
-    setTimeout(()=>{
+    setTimeout(() => {
       this.pickDay()
     }, 400)
-    setTimeout(()=>{
+    setTimeout(() => {
       this.alertwindowservice.hide()
     }, 450)
   }
