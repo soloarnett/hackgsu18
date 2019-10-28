@@ -2,18 +2,19 @@
 
 
   <div class="main" id="info">
-    <div class="logo" (click)="aboutToggle()">
+    <div class="logo">
       <div class="image">
         <img src="assets/img/logo.svg">
       </div>
-      <!-- <div class="image">
+      <div class="image">
         <img class="ncr" src="assets/img/ncr.svg">
-      </div> -->
+      </div>
     </div>
     <div class="details">
       <span class="title light">H A C K&nbsp;
-        <span class="reg">G S U </span>&nbsp;' 19</span>
-      <span class="date">03.29 - 03.31</span>
+        <span class="reg">G S U </span>&nbsp;' 20</span>
+      <span class="date">11.01 - 11.03</span>
+      <span class="season">Fall 2019</span>
     </div>
 
     <a id="vetek" href="https://vetekconsulting.com" class="poweredby">A Vetek Site</a>
@@ -26,16 +27,16 @@
       <div class="container">
         <div class="action registration">
           <a href="{{actionGroupActions[0]}}">
-            <i class="material-icons blue">assignment</i>
-            <span class="label">Register Now!</span>
+            <i class="material-icons blue">check_box</i>
+            <span class="label">Check-in Now</span>
           </a>
         </div>
-        <!-- <div class="action schedule" (click)="goto('/schedule')">
+        <div class="action schedule" (click)="goto('/schedule')">
           <div class="actionLink">
             <i class="material-icons">event</i>
             <span class="label">Schedule</span>
           </div>
-        </div> -->
+        </div>
 
         <div class="action join">
           <a target="_blank" href="{{actionGroupActions[1]}}">
@@ -48,16 +49,15 @@
 
 
         <!-- <div class="action contact" (click)="goto('/support')"> -->
-        <div class="action contact">
+        <!-- <div class="action contact">
           <a target="_blank" href="{{subGroupActions[1]}}">
             <div class="actionLink">
               <i class="material-icons">message</i>
-              <!-- <span class="label">Hack Support</span> -->
               <span class="label">Join our Slack</span>
               <span class="description"></span>
             </div>
           </a>
-        </div>
+        </div> -->
         <!-- <div class="action faq" (click)="goto('/faq')">
           <div class="actionLink">
             <i class="material-icons">help</i>
@@ -69,9 +69,17 @@
           <a target="_blank" href="{{actionGroupActions[3]}}">
             <i class="material-icons">group</i>
             <span class="label">Volunteer!</span>
-            <span class="description"></span>
+            <!-- <span class="description"></span> -->
           </a>
         </div>
+
+        <!-- <div class="action travel">
+          <a target="_blank" href="{{actionGroupActions[4]}}">
+            <i class="material-icons">airplanemode_active</i>
+            <span class="label">Travel Reimbursement</span>
+            <span class="description"></span>
+          </a>
+        </div> -->
 
         <!-- <div class="action travel">
           <a target="_blank" href="http://hackspurt.com/hackgsu/details">
@@ -94,8 +102,8 @@
           </a>
         </div>
         <div class="subGroupAction">
-          <a [routerLink]="['/schedule']" routerLinkActive="router-link-active">
-            <span class="label">Schedule</span>
+          <a href="{{actionGroupActions[4]}}" target="_blank">
+            <span class="label">Travel Reimbursement</span>
           </a>
         </div>
 

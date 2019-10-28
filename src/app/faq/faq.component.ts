@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { AlertWindowService } from './../alert-window.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import * as $ from 'jquery';
@@ -9,7 +10,7 @@ import * as $ from 'jquery';
   styleUrls: ['./faq.component.scss']
 })
 export class FaqComponent implements OnInit {
-  faq: object;
+  faq: any;
   getFaq() {
     if (localStorage['faq'] && localStorage['faq'].length > 0) {
       try {
@@ -19,19 +20,23 @@ export class FaqComponent implements OnInit {
       }
     }
     this.aws.showDataWithoutButton('Just a sec...')
-    let url = "https://aeb4oc6uwg.execute-api.us-east-1.amazonaws.com/prod/getfaq"
-    return $.ajax({
-      url: url,
-      beforeSend: (xhr) => {
-        xhr.setRequestHeader('Content-Type', 'application/json');
-      },
-      method: "GET",
-    }).done((data) => {
-      this.aws.hide()
-      console.log(data)
-      localStorage['faq'] = JSON.stringify(data.body)
-      this.faq = data.body
-    })
+    const url = "https://k2yeej6r24.execute-api.us-east-1.amazonaws.com/dev/getfaqs"
+    const params = {
+      hackathonId: 'e3df05aa15054a1706eb455341221e7a'
+    };
+    return this.http.post(url, params).toPromise()
+      .then(res => {
+        this.aws.hide()
+        console.log(res)
+        localStorage['faq'] = JSON.stringify(res['body'])
+        this.faq = res['body']
+      })
+      .catch(err => {
+        console.log('err', err);
+        alert('unable to get faq');
+      });
+    // return $.post(url, { body: params }).promise()
+
   }
   loaded: boolean = false;
   pageLoading: boolean = false;
@@ -60,7 +65,7 @@ export class FaqComponent implements OnInit {
     this.pageLoading = false
   }
 
-  constructor(private aws: AlertWindowService) { }
+  constructor(private aws: AlertWindowService, private http: HttpClient) { }
 
   ngOnInit() {
     this.getFaq().then(() => {

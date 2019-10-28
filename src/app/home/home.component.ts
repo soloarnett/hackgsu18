@@ -13,7 +13,8 @@ export class HomeComponent implements OnInit {
 
   actionGroupActions: Array<string> = [
     // Registration Link
-    "https://hackspurt.com/hackgsu/register/student",
+    "https://hackspurt.com/student",
+    // "https://hackspurt.typeform.com/to/s6Gclt",
     // Preregistration Link
     // "https://goo.gl/forms/mndU8vm6mHVKYXcD2",
     //Volunteer Link
@@ -24,7 +25,9 @@ export class HomeComponent implements OnInit {
     "#faq",
     // Travel Reimbursment Link
     // "https://hackgsuspring2018.typeform.com/to/EM26kg",
-    'https://goo.gl/forms/z4BOXGSxBFYqFsf13'
+    'https://goo.gl/forms/z4BOXGSxBFYqFsf13',
+    // Travel reimbursemet
+    'https:forms.gle/Coz1MATrcqVScWiQ8'
     // "#"
   ];
 

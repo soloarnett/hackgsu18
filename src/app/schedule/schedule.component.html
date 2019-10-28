@@ -7,20 +7,19 @@
   <div class="dayController noDS">
     <div class="container">
       <div class="otherDays">
-        <span class="day" *ngFor="let day of otherDays" (click)="getDay(day)">{{day}}</span>
+        <span class="day" *ngFor="let day of otherDays.date" (click)="pickDay(day)">{{otherDays.index[day].weekday}}</span>
       </div>
       <div class="currentDay">
-        <span class="day">{{currentDay}}</span>
-        <span class="date">{{currentDate}}</span>
+        <span class="day" >{{currentDay.weekday}}</span>
+        <span class="date" >{{currentDay.pretty}}</span>
       </div>
     </div>
   </div>
-  <div class="events">
+  <div id="events" class="events">
     <div class="event" *ngFor="let event of eventsByDay">
       <div class="info">
         <div class="mainInfo">
           <span class="title">{{event.title}}</span>
-          <span class="location">{{event.location ? event.location : 'Atlanta'}}</span>
         </div>
         <span class="description" *ngIf="event.description" [innerHTML]="event.description"></span>
       </div>
@@ -37,19 +36,19 @@
 <section id="desktopSchedule" [class]="loadInOutAnimation()">
 
   <div class="allEvents">
-    <div class="day" *ngFor="let day of events">
+    <div class="day" *ngFor="let day of days">
       <div class="events">
         <div class="dayController">
-          <span class="dayOfEvent">{{day.day}}</span>
-          <span class="date">{{day.date}}</span>
+          <span class="dayOfEvent">{{events[day].weekday}}</span>
+          <span class="date">{{day}}</span>
         </div>
-        <div [class]="'event ' + (event.description ? 'hasDescription' : '')" *ngFor="let event of day.events" (click)="displayEvent(event.description)">
+        <div [class]="'event ' + (event.description ? 'hasDescription' : '')" *ngFor="let event of this.events[day].events" (click)="displayEvent(event.description)">
           <div class="evenItem time">
             <span *ngIf="event.minutes">{{event.hour}}:{{event.minutes}}{{event.period}}</span>
             <span *ngIf="!event.minutes">{{event.hour}}{{event.period}}</span>
           </div>
           <span class="evenItem title">{{event.title}}</span>
-          <span class="evenItem location">{{event.location ? event.location : 'Atlanta'}}</span>
+          <span class="evenItem location">{{event.location ? event.location : ''}}</span>
         </div>
       </div>
     </div>

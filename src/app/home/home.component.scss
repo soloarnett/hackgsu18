@@ -5,6 +5,11 @@ html {
   height: $full;
 }
 
+.season{
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+}
 
 app-home {
   position: fixed;
@@ -190,15 +195,18 @@ section {
 
       .logo {
         // @include flex(1,1,0);
-        width: 10rem;
+        // width: 10rem;
         height: 10rem;
+        width: 40vw;
         @include display_flex;
         flex-direction: row;
         // @include gflex(3);
         @include notMobile{
             flex: initial;
-            width: 15rem;
-            height: 15rem;
+            // width: 15rem;
+            width: 40vw; 
+            // height: 15rem;
+            height: 30vw;
         }
         .image {
           @include gflex(1);
