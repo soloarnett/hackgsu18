@@ -14,12 +14,13 @@ export class ScheduleComponent implements OnInit {
   currentDay = {
     date: '',
     weekday: '',
-    index: 0
+    index: 0,
+    pretty: ''
   }
   otherDays = {
     date: [],
     weekday: [],
-    index: {}
+    index: {},
   }
   events = {}
   eventsByDay
@@ -63,7 +64,9 @@ export class ScheduleComponent implements OnInit {
           // this.events.push(Object.values(this.schedule.days[day].events))
           this.events[day] = {
             weekday: this.weekdays[new Date(day).getDay()],
-            events: Object.values(this.schedule.days[day].events)
+            events: Object.values(this.schedule.days[day].events).sort((a,b) => {
+              return a['order'] - b['order']
+            })
           }
         });
         this.getDay(this.days[0]);
