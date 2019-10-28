@@ -7,7 +7,7 @@
   <div class="dayController noDS">
     <div class="container">
       <div class="otherDays">
-        <span class="day" *ngFor="let day of otherDays.date" (click)="pickDay(day)">{{otherDays.index[day].weekday}}</span>
+        <span class="day" *ngFor="let day of otherDays.date" (click)="pickDay(day)">{{(otherDays.index[day]).weekday}}</span>
       </div>
       <div class="currentDay">
         <span class="day" >{{currentDay.weekday}}</span>
@@ -24,11 +24,12 @@
         <span class="description" *ngIf="event.description" [innerHTML]="event.description"></span>
       </div>
       <div class="time">
-        <div class="hour">{{event.hour}}</div>
+        <span>{{event.start}}</span>
+        <!-- <div class="hour">{{event.hour}}</div>
         <div class="smallTime">
           <div class="minutes">{{event.minutes != 0 ? event.minutes : ''}}</div>
           <div class="period" *ngIf="event.period">{{event.period}}</div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -39,16 +40,17 @@
     <div class="day" *ngFor="let day of days">
       <div class="events">
         <div class="dayController">
-          <span class="dayOfEvent">{{events[day].weekday}}</span>
+          <span class="dayOfEvent" *ngIf="events[day].weekday">{{events[day].weekday}}</span>
           <span class="date">{{day}}</span>
         </div>
         <div [class]="'event ' + (event.description ? 'hasDescription' : '')" *ngFor="let event of this.events[day].events" (click)="displayEvent(event.description)">
           <div class="evenItem time">
-            <span *ngIf="event.minutes">{{event.hour}}:{{event.minutes}}{{event.period}}</span>
-            <span *ngIf="!event.minutes">{{event.hour}}{{event.period}}</span>
+            <!-- <span *ngIf="event.minutes">{{event.hour}}:{{event.minutes}}{{event.period}}</span> -->
+            <!-- <span *ngIf="!event.minutes">{{event.hour}}{{event.period}}</span> -->
+            <span>{{event.start}}</span>
           </div>
           <span class="evenItem title">{{event.title}}</span>
-          <span class="evenItem location">{{event.location ? event.location : ''}}</span>
+          <!-- <span class="evenItem location">{{event.location ? event.location : ''}}</span> -->
         </div>
       </div>
     </div>

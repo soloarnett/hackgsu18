@@ -22,6 +22,7 @@ export class ScheduleComponent implements OnInit {
     weekday: [],
     index: {},
   }
+  otherDaysWeekday = {}
   events = {}
   eventsByDay
   otherEvents
@@ -62,8 +63,14 @@ export class ScheduleComponent implements OnInit {
         this.days.forEach(day => {
           // grab the events from the schedule for each day and push them to an object that has the array of events assigned to a day
           // this.events.push(Object.values(this.schedule.days[day].events))
+          let daySplit = day.split('-')
+          let weekday = day
+          if(daySplit[2].length < 2){
+            console.log('daysplit', daySplit)
+            weekday = daySplit[0] + '-' + daySplit[1] + '-' + '0'+ daySplit[2]
+          }
           this.events[day] = {
-            weekday: this.weekdays[new Date(day).getDay()],
+            weekday: this.weekdays[new Date(weekday).getDay()],
             events: Object.values(this.schedule.days[day].events).sort((a,b) => {
               return a['order'] - b['order']
             })
@@ -191,6 +198,12 @@ export class ScheduleComponent implements OnInit {
     //     this.eventsByDay = element.events
     //   }
     // });
+    let daySplit = date.split('-')
+    let weekday = date
+    if(daySplit[2].length < 2){
+      console.log('daysplit', daySplit)
+      weekday = daySplit[0] + '-' + daySplit[1] + '-' + '0'+ daySplit[2]
+    }
     const dayOb = this.schedule.days[date];
     const dayArr = Object.values(this.schedule.days[date].events).sort((a, b) => {
       return a['order'] - b['order'];
@@ -198,7 +211,8 @@ export class ScheduleComponent implements OnInit {
     
     this.currentDay.date = date
 
-    this.currentDay.weekday = this.weekdays[new Date(date).getDay()];
+    
+    this.currentDay.weekday = this.weekdays[new Date(weekday).getDay()];
     this.currentDay.index = this.days.indexOf(this.currentDay.date)
 
     this.currentDay['split'] = this.currentDay.date.split('-')
@@ -211,13 +225,22 @@ export class ScheduleComponent implements OnInit {
     this.otherDays.date = this.days.filter(selectedDay => {
       return selectedDay !== date;
     });
-    this.otherDays.weekday = this.otherDays.date.map(day => {
-      return this.weekdays[new Date(day).getDay()]
+    this.otherDays.weekday = []
+    this.otherDays.date.forEach(day => {
+      let daySplit = day.split('-')
+      if(daySplit[2].length < 2){
+        day = daySplit[0] + '-' + daySplit[1] + '-' + '0'+ daySplit[2]
+      }
+      this.otherDays.weekday.push(this.weekdays[new Date(day).getDay()])
     })
+    console.log(typeof(this.otherDays.weekday), this.otherDays.weekday)
     for (let i = this.otherDays.date.length - 1; i >= 0; i--) {
       this.otherDays.index[this.otherDays.date[i]] = {}
       this.otherDays.index[this.otherDays.date[i]]['i'] = i
-      this.otherDays.index[this.otherDays.date[i]]['weekday'] = this.otherDays.weekday[i]
+      this.otherDays.index[this.otherDays.date[i]].weekday = this.otherDays.weekday[i]
+      console.log('otherdays weekday', this.otherDays.weekday[i])
+      // this.otherDays.index[this.otherDays.date[i]]['weekday'] = this.otherDays.weekday[i]
+      // this.otherDaysWeekday[this.otherDays.date[i]] =m
       this.otherDays.index[this.otherDays.date[i]]['split'] = this.otherDays.date[i].split('-')
       this.otherDays.index[this.otherDays.date[i]]['year'] = this.otherDays.index[this.otherDays.date[i]].split[0]
       this.otherDays.index[this.otherDays.date[i]]['month'] = this.otherDays.index[this.otherDays.date[i]].split[1]
